@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>享元模式 | aiyoudiao</title>
+    <meta name="generator" content="VuePress 1.9.7" />
+    <link rel="icon" href="/img/blog.ico">
+    <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script> <meta name="description" content="码二~">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,gitee,markdown">
+    <meta name="theme-color" content="#11a8cd">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <link rel="preload" href="/assets/css/0.styles.ea2a3732.css" as="style"><link rel="preload" href="/assets/js/app.71a8b70f.js" as="script"><link rel="preload" href="/assets/js/4.99c98a38.js" as="script"><link rel="preload" href="/assets/js/5.f44a23c5.js" as="script"><link rel="preload" href="/assets/js/37.22cdea99.js" as="script"><link rel="preload" href="/assets/js/10.d273456c.js" as="script"><link rel="preload" href="/assets/js/12.aa175a7e.js" as="script"><link rel="prefetch" href="/assets/js/1.5f9638fa.js"><link rel="prefetch" href="/assets/js/11.9075b0bf.js"><link rel="prefetch" href="/assets/js/13.298118a4.js"><link rel="prefetch" href="/assets/js/14.cb62bfee.js"><link rel="prefetch" href="/assets/js/15.723a4b1a.js"><link rel="prefetch" href="/assets/js/16.481de1dd.js"><link rel="prefetch" href="/assets/js/17.803d41f4.js"><link rel="prefetch" href="/assets/js/18.7133a982.js"><link rel="prefetch" href="/assets/js/19.48792e7d.js"><link rel="prefetch" href="/assets/js/2.e177de7f.js"><link rel="prefetch" href="/assets/js/20.8560df0b.js"><link rel="prefetch" href="/assets/js/21.2f6fd01e.js"><link rel="prefetch" href="/assets/js/22.6a4570eb.js"><link rel="prefetch" href="/assets/js/23.1edeb0ac.js"><link rel="prefetch" href="/assets/js/24.09218bc3.js"><link rel="prefetch" href="/assets/js/25.05192f90.js"><link rel="prefetch" href="/assets/js/26.fe46311a.js"><link rel="prefetch" href="/assets/js/27.f4cb14ca.js"><link rel="prefetch" href="/assets/js/28.03e4aa0c.js"><link rel="prefetch" href="/assets/js/29.0111ed1b.js"><link rel="prefetch" href="/assets/js/30.e76f0315.js"><link rel="prefetch" href="/assets/js/31.796396c1.js"><link rel="prefetch" href="/assets/js/32.31cddc0b.js"><link rel="prefetch" href="/assets/js/33.b9325774.js"><link rel="prefetch" href="/assets/js/34.b0da89e0.js"><link rel="prefetch" href="/assets/js/35.0e9dc174.js"><link rel="prefetch" href="/assets/js/36.5e8a65e0.js"><link rel="prefetch" href="/assets/js/38.7165a0f4.js"><link rel="prefetch" href="/assets/js/39.eef38cdf.js"><link rel="prefetch" href="/assets/js/40.7a873474.js"><link rel="prefetch" href="/assets/js/41.f631ea70.js"><link rel="prefetch" href="/assets/js/42.78a37ae1.js"><link rel="prefetch" href="/assets/js/43.cd5f609e.js"><link rel="prefetch" href="/assets/js/44.704e4b56.js"><link rel="prefetch" href="/assets/js/45.b672e135.js"><link rel="prefetch" href="/assets/js/6.b979bb2d.js"><link rel="prefetch" href="/assets/js/7.9287b053.js"><link rel="prefetch" href="/assets/js/8.85fe30ee.js"><link rel="prefetch" href="/assets/js/9.a80ff5d3.js"> <link rel="stylesheet" href="/assets/css/0.styles.ea2a3732.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" width="50" height="50" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://p3-passport.byteacctimg.com/img/user-avatar/794fdae4ff249d532da19a3c26d420ed~300x300.image" alt="aiyoudiao" class="logo"> <span class="site-name can-hide">
+      aiyoudiao
+    </span></a> <div class="links"><div class="sky-switch" data-v-3a03d589><label for="toggle" data-v-3a03d589><input id="toggle" type="checkbox" data-v-3a03d589><div data-v-3a03d589></div></label></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><!----> <span class="title" style="display:;">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/6840207027/" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与设计" class="dropdown-title"><!----> <span class="title" style="display:;">算法与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/70741550255/" class="nav-link">
+  LeetCode
+</a></li><li class="dropdown-item"><!----> <a href="/pages/60643190219/" class="nav-link">
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41148120212/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/pages/50546120212/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02344550255/" class="nav-link">
+  Other
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技能" class="dropdown-title"><!----> <span class="title" style="display:;">技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/82158160216/" class="nav-link">
+  PMP
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41858590259/" class="nav-link">
+  Office
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02359360236/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/pages/73600130213/" class="nav-link">
+  Bash
+</a></li></ul></div></div><div class="nav-item"><a href="/pages/83857320232/" class="nav-link">
+  历程
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="首页" class="dropdown-title"><!----> <span class="title" style="display:;">首页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">
+  归档
+</a></li><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">
+  分类
+</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">
+  标签
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><!----> <span class="title" style="display:;">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/02657130213/" class="nav-link">
+  简介
+</a></li><li class="dropdown-item"><!----> <a href="https://aiyoudiao.gitee.io/md/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  md editor
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://aiyoudiao.gitee.io/hu/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  hu generator
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/mar.jpg"> <div class="blogger-info"><h3>码二</h3> <span>扫微信二维码，认识一下码二吧😉。</span></div></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><!----> <span class="title" style="display:;">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/6840207027/" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与设计" class="dropdown-title"><!----> <span class="title" style="display:;">算法与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/70741550255/" class="nav-link">
+  LeetCode
+</a></li><li class="dropdown-item"><!----> <a href="/pages/60643190219/" class="nav-link">
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41148120212/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/pages/50546120212/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02344550255/" class="nav-link">
+  Other
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技能" class="dropdown-title"><!----> <span class="title" style="display:;">技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/82158160216/" class="nav-link">
+  PMP
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41858590259/" class="nav-link">
+  Office
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02359360236/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/pages/73600130213/" class="nav-link">
+  Bash
+</a></li></ul></div></div><div class="nav-item"><a href="/pages/83857320232/" class="nav-link">
+  历程
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="首页" class="dropdown-title"><!----> <span class="title" style="display:;">首页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">
+  归档
+</a></li><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">
+  分类
+</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">
+  标签
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><!----> <span class="title" style="display:;">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/02657130213/" class="nav-link">
+  简介
+</a></li><li class="dropdown-item"><!----> <a href="https://aiyoudiao.gitee.io/md/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  md editor
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://aiyoudiao.gitee.io/hu/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  hu generator
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>LeetCode</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>排序算法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据结构</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>设计模式</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/50546120212/" class="sidebar-link">浅聊设计理念</a></li><li><a href="/pages/95627170217/" class="sidebar-link">谈一谈设计原则</a></li><li><a href="/pages/6423406026/" class="sidebar-link">工厂方法模式</a></li><li><a href="/pages/55439310231/" class="sidebar-link">抽象工厂模式</a></li><li><a href="/pages/01945290229/" class="sidebar-link">建造者模式</a></li><li><a href="/pages/2011504024/" class="sidebar-link">原型模式</a></li><li><a href="/pages/09418490249/" class="sidebar-link">单例模式</a></li><li><a href="/pages/84523100210/" class="sidebar-link">桥接模式</a></li><li><a href="/pages/45526410241/" class="sidebar-link">代理模式</a></li><li><a href="/pages/05304400240/" class="sidebar-link">装饰器模式</a></li><li><a href="/pages/40707180218/" class="sidebar-link">适配器模式</a></li><li><a href="/pages/20709510251/" aria-current="page" class="active sidebar-link">享元模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/20709510251/#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/pages/20709510251/#享元模式" class="sidebar-link">享元模式</a></li></ul></li><li><a href="/pages/69112310231/" class="sidebar-link">组合模式</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Other</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"> <div class="theme-vdoing-wrapper bg-style-1"><div class="articleInfo-wrap" data-v-18fb2c02><div class="articleInfo" data-v-18fb2c02><ul class="breadcrumbs" data-v-18fb2c02><li data-v-18fb2c02><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-18fb2c02></a></li> <li data-v-18fb2c02><a href="/categories/?category=%E7%AE%97%E6%B3%95%E4%B8%8E%E8%AE%BE%E8%AE%A1" title="分类" data-v-18fb2c02>
+          算法与设计
+        </a></li> <li data-v-18fb2c02><a href="/categories/?category=%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F" title="分类" data-v-18fb2c02>
+          设计模式
+        </a></li> <!----></ul> <div class="info" data-v-18fb2c02><div title="作者" class="author iconfont icon-touxiang" data-v-18fb2c02><a href="javascript:;" data-v-18fb2c02>aiyoudiao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-18fb2c02><a href="javascript:;" data-v-18fb2c02>2022-02-22</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><!----> <span>
+            享元模式
+          </span></h1> <div class="theme-vdoing-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>享元模式属于结构型模式，这个类型的设计模式总结出了 类、对象组合后的经典结构，将类、对象的结构和使用解耦了，花式的去借用对象。</p> <h2 id="享元模式"><a href="#享元模式" class="header-anchor">#</a> 享元模式</h2> <p>使用场景：当需要复用大量的对象，这大量的对象几乎都差不多，频繁的去创建导致性能开销暴涨，这时候可以将这些对象存起来，之后需要用的时候，直接从缓存中去拿，用完再初始化一下状态，最后再放入容器中。这样就可以频繁的使用了，比如服务器端的线程池、连接池，它们都是享元模式的具体体现。</p> <p>理解：类、对象的结构和使用解耦，享元模式以内存来换取时间，减少了重复的对象创建开辟内存的操作。享元模式的使用需要根据应用场景，如果根本不需要使用享元模式而强行去使用它，就会造成多余的性能开销了，就像你开店，本来开的是个小饭馆，你却请了一个大酒店那么多的员工，那可不就太浪费了。</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">namespace</span> struct_mode_05 <span class="token punctuation">{</span>
+
+    <span class="token comment">// 接口</span>
+    <span class="token keyword">interface</span> <span class="token class-name">IServer</span> <span class="token punctuation">{</span>
+
+        <span class="token function">recruit</span><span class="token punctuation">(</span>worker<span class="token operator">:</span> Worker<span class="token punctuation">)</span><span class="token operator">:</span> IServer
+        <span class="token function">work</span><span class="token punctuation">(</span>guest<span class="token operator">:</span> Guest<span class="token punctuation">)</span><span class="token operator">:</span> IServer
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 顾客：操作对象</span>
+    <span class="token keyword">class</span> <span class="token class-name">Guest</span> <span class="token punctuation">{</span>
+        name<span class="token operator">:</span> <span class="token builtin">string</span>
+        isAccept<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+
+        <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 工人：元素</span>
+    <span class="token keyword">class</span> <span class="token class-name">Worker</span> <span class="token punctuation">{</span>
+
+        name<span class="token operator">:</span> <span class="token builtin">string</span>
+        isWorker<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+
+        <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token punctuation">}</span>
+
+        <span class="token function">work</span><span class="token punctuation">(</span>guest<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">正在服务</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>guest<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 餐厅：享元工厂</span>
+    <span class="token keyword">class</span> <span class="token class-name">DiningRoom</span> <span class="token keyword">implements</span> <span class="token class-name">IServer</span> <span class="token punctuation">{</span>
+
+        workerList<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>Worker<span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+        <span class="token function">recruit</span><span class="token punctuation">(</span>worker<span class="token operator">:</span> Worker<span class="token punctuation">)</span><span class="token operator">:</span> IServer <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>workerList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>worker<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">work</span><span class="token punctuation">(</span>guest<span class="token operator">:</span> Guest<span class="token punctuation">)</span><span class="token operator">:</span> IServer <span class="token punctuation">{</span>
+
+            <span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>workerList<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>item <span class="token operator">=&gt;</span> <span class="token operator">!</span>item<span class="token punctuation">.</span>isWorker<span class="token punctuation">)</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                obj<span class="token punctuation">.</span>isWorker <span class="token operator">=</span> <span class="token boolean">true</span>
+                guest<span class="token punctuation">.</span>isAccept <span class="token operator">=</span> <span class="token boolean">true</span>
+
+                obj<span class="token punctuation">.</span><span class="token function">work</span><span class="token punctuation">(</span>guest<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+
+                <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    obj<span class="token punctuation">.</span>isWorker <span class="token operator">=</span> <span class="token boolean">false</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3000</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'已没有工人可以提供服务，客户'</span> <span class="token operator">+</span> guest<span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">' 请稍等。。。 '</span><span class="token punctuation">)</span>
+
+                <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">work</span><span class="token punctuation">(</span>guest<span class="token punctuation">)</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3000</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> <span class="token keyword">this</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 使用</span>
+
+    <span class="token comment">// 餐厅招人</span>
+    <span class="token keyword">const</span> diningRoom <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DiningRoom</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> itemIndex<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        diningRoom<span class="token punctuation">.</span><span class="token function">recruit</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Worker</span><span class="token punctuation">(</span><span class="token string">'工人'</span> <span class="token operator">+</span> itemIndex<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 客人扎堆</span>
+    <span class="token keyword">const</span> guestList <span class="token operator">=</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> itemIndex<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Guest</span><span class="token punctuation">(</span><span class="token string">'客人'</span> <span class="token operator">+</span> itemIndex<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">0.5</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// 一堆客人进入餐厅接受服务</span>
+    guestList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>guest <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        diningRoom<span class="token punctuation">.</span><span class="token function">work</span><span class="token punctuation">(</span>guest<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// 轮询判断所有客户是否已经全部接受服务</span>
+    <span class="token keyword">let</span> acceptId <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> acceptGuest <span class="token operator">=</span> guestList<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>guest <span class="token operator">=&gt;</span> guest<span class="token punctuation">.</span>isAccept<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>acceptGuest<span class="token punctuation">.</span>length <span class="token operator">===</span> guestList<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'所有顾客接受服务完毕！！！！！'</span><span class="token punctuation">)</span>
+            <span class="token function">clearInterval</span><span class="token punctuation">(</span>acceptId<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div></div></div> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F" title="标签">#设计模式</a></div> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">2/22/2022, 2:14:29 AM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/40707180218/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">适配器模式</div></a> <a href="/pages/69112310231/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">组合模式</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/40707180218/" class="prev">适配器模式</a></span> <span class="next"><a href="/pages/69112310231/"> 组合模式 </a>
+        →
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/69112310231/"><div>组合模式</div></a> <span>02-22</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/40707180218/"><div>适配器模式</div></a> <span>02-22</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/05304400240/"><div>装饰器模式</div></a> <span>02-22</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div> </main></div> <div class="footer"><!----> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2017-2022
+    <span class="link">aiyoudiao 码二</span> <!----></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div><!----><div id="VuepressPluginLive2d"></div></div></div>
+    <script src="/assets/js/app.71a8b70f.js" defer></script><script src="/assets/js/4.99c98a38.js" defer></script><script src="/assets/js/5.f44a23c5.js" defer></script><script src="/assets/js/37.22cdea99.js" defer></script><script src="/assets/js/10.d273456c.js" defer></script><script src="/assets/js/12.aa175a7e.js" defer></script>
+  </body>
+</html>

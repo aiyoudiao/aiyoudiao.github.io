@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>中介者模式 | aiyoudiao</title>
+    <meta name="generator" content="VuePress 1.9.7" />
+    <link rel="icon" href="/img/blog.ico">
+    <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script> <meta name="description" content="码二~">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,gitee,markdown">
+    <meta name="theme-color" content="#11a8cd">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <link rel="preload" href="/assets/css/0.styles.ea2a3732.css" as="style"><link rel="preload" href="/assets/js/app.da3805c6.js" as="script"><link rel="preload" href="/assets/js/4.99c98a38.js" as="script"><link rel="preload" href="/assets/js/5.f44a23c5.js" as="script"><link rel="preload" href="/assets/js/50.94811243.js" as="script"><link rel="preload" href="/assets/js/10.1a3be5b3.js" as="script"><link rel="preload" href="/assets/js/12.72af0c84.js" as="script"><link rel="prefetch" href="/assets/js/1.5f9638fa.js"><link rel="prefetch" href="/assets/js/11.faf75fd2.js"><link rel="prefetch" href="/assets/js/13.298118a4.js"><link rel="prefetch" href="/assets/js/14.cb62bfee.js"><link rel="prefetch" href="/assets/js/15.723a4b1a.js"><link rel="prefetch" href="/assets/js/16.481de1dd.js"><link rel="prefetch" href="/assets/js/17.803d41f4.js"><link rel="prefetch" href="/assets/js/18.7133a982.js"><link rel="prefetch" href="/assets/js/19.48792e7d.js"><link rel="prefetch" href="/assets/js/2.3a348b7a.js"><link rel="prefetch" href="/assets/js/20.8560df0b.js"><link rel="prefetch" href="/assets/js/21.2f6fd01e.js"><link rel="prefetch" href="/assets/js/22.6a4570eb.js"><link rel="prefetch" href="/assets/js/23.1edeb0ac.js"><link rel="prefetch" href="/assets/js/24.09218bc3.js"><link rel="prefetch" href="/assets/js/25.05192f90.js"><link rel="prefetch" href="/assets/js/26.fe46311a.js"><link rel="prefetch" href="/assets/js/27.f4cb14ca.js"><link rel="prefetch" href="/assets/js/28.03e4aa0c.js"><link rel="prefetch" href="/assets/js/29.0111ed1b.js"><link rel="prefetch" href="/assets/js/30.e76f0315.js"><link rel="prefetch" href="/assets/js/31.796396c1.js"><link rel="prefetch" href="/assets/js/32.31cddc0b.js"><link rel="prefetch" href="/assets/js/33.b9325774.js"><link rel="prefetch" href="/assets/js/34.b0da89e0.js"><link rel="prefetch" href="/assets/js/35.0e9dc174.js"><link rel="prefetch" href="/assets/js/36.5e8a65e0.js"><link rel="prefetch" href="/assets/js/37.22cdea99.js"><link rel="prefetch" href="/assets/js/38.7165a0f4.js"><link rel="prefetch" href="/assets/js/39.ff249b94.js"><link rel="prefetch" href="/assets/js/40.7ceee0d6.js"><link rel="prefetch" href="/assets/js/41.71bd06c2.js"><link rel="prefetch" href="/assets/js/42.9ae82a02.js"><link rel="prefetch" href="/assets/js/43.8302f4a4.js"><link rel="prefetch" href="/assets/js/44.a18c9cf0.js"><link rel="prefetch" href="/assets/js/45.8542ce46.js"><link rel="prefetch" href="/assets/js/46.de19148e.js"><link rel="prefetch" href="/assets/js/47.2e84bbc0.js"><link rel="prefetch" href="/assets/js/48.11de106c.js"><link rel="prefetch" href="/assets/js/49.354aea0a.js"><link rel="prefetch" href="/assets/js/51.1aa0f57c.js"><link rel="prefetch" href="/assets/js/52.823a4291.js"><link rel="prefetch" href="/assets/js/53.a12c0154.js"><link rel="prefetch" href="/assets/js/54.2f720747.js"><link rel="prefetch" href="/assets/js/55.1345e7dd.js"><link rel="prefetch" href="/assets/js/56.4b28e635.js"><link rel="prefetch" href="/assets/js/57.ff5e72de.js"><link rel="prefetch" href="/assets/js/6.b979bb2d.js"><link rel="prefetch" href="/assets/js/7.9287b053.js"><link rel="prefetch" href="/assets/js/8.b82ecfa1.js"><link rel="prefetch" href="/assets/js/9.a80ff5d3.js"> <link rel="stylesheet" href="/assets/css/0.styles.ea2a3732.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" width="50" height="50" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://p3-passport.byteacctimg.com/img/user-avatar/794fdae4ff249d532da19a3c26d420ed~300x300.image" alt="aiyoudiao" class="logo"> <span class="site-name can-hide">
+      aiyoudiao
+    </span></a> <div class="links"><div class="sky-switch" data-v-3a03d589><label for="toggle" data-v-3a03d589><input id="toggle" type="checkbox" data-v-3a03d589><div data-v-3a03d589></div></label></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><!----> <span class="title" style="display:;">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/6840207027/" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与设计" class="dropdown-title"><!----> <span class="title" style="display:;">算法与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/70741550255/" class="nav-link">
+  LeetCode
+</a></li><li class="dropdown-item"><!----> <a href="/pages/60643190219/" class="nav-link">
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41148120212/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/pages/50546120212/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02344550255/" class="nav-link">
+  Other
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技能" class="dropdown-title"><!----> <span class="title" style="display:;">技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/82158160216/" class="nav-link">
+  PMP
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41858590259/" class="nav-link">
+  Office
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02359360236/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/pages/73600130213/" class="nav-link">
+  Bash
+</a></li></ul></div></div><div class="nav-item"><a href="/pages/83857320232/" class="nav-link">
+  历程
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="首页" class="dropdown-title"><!----> <span class="title" style="display:;">首页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">
+  归档
+</a></li><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">
+  分类
+</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">
+  标签
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><!----> <span class="title" style="display:;">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/02657130213/" class="nav-link">
+  简介
+</a></li><li class="dropdown-item"><!----> <a href="https://aiyoudiao.gitee.io/md/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  md editor
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://aiyoudiao.gitee.io/hu/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  hu generator
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/mar.jpg"> <div class="blogger-info"><h3>码二</h3> <span>扫微信二维码，认识一下码二吧😉。</span></div></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><!----> <span class="title" style="display:;">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/6840207027/" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与设计" class="dropdown-title"><!----> <span class="title" style="display:;">算法与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/70741550255/" class="nav-link">
+  LeetCode
+</a></li><li class="dropdown-item"><!----> <a href="/pages/60643190219/" class="nav-link">
+  排序算法
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41148120212/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/pages/50546120212/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02344550255/" class="nav-link">
+  Other
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技能" class="dropdown-title"><!----> <span class="title" style="display:;">技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/82158160216/" class="nav-link">
+  PMP
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41858590259/" class="nav-link">
+  Office
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02359360236/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/pages/73600130213/" class="nav-link">
+  Bash
+</a></li></ul></div></div><div class="nav-item"><a href="/pages/83857320232/" class="nav-link">
+  历程
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="首页" class="dropdown-title"><!----> <span class="title" style="display:;">首页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">
+  归档
+</a></li><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">
+  分类
+</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">
+  标签
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><!----> <span class="title" style="display:;">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/02657130213/" class="nav-link">
+  简介
+</a></li><li class="dropdown-item"><!----> <a href="https://aiyoudiao.gitee.io/md/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  md editor
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://aiyoudiao.gitee.io/hu/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  hu generator
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>LeetCode</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>排序算法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据结构</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>设计模式</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/50546120212/" class="sidebar-link">浅聊设计理念</a></li><li><a href="/pages/95627170217/" class="sidebar-link">谈一谈设计原则</a></li><li><a href="/pages/6423406026/" class="sidebar-link">工厂方法模式</a></li><li><a href="/pages/55439310231/" class="sidebar-link">抽象工厂模式</a></li><li><a href="/pages/01945290229/" class="sidebar-link">建造者模式</a></li><li><a href="/pages/2011504024/" class="sidebar-link">原型模式</a></li><li><a href="/pages/09418490249/" class="sidebar-link">单例模式</a></li><li><a href="/pages/84523100210/" class="sidebar-link">桥接模式</a></li><li><a href="/pages/45526410241/" class="sidebar-link">代理模式</a></li><li><a href="/pages/05304400240/" class="sidebar-link">装饰器模式</a></li><li><a href="/pages/40707180218/" class="sidebar-link">适配器模式</a></li><li><a href="/pages/20709510251/" class="sidebar-link">享元模式</a></li><li><a href="/pages/69112310231/" class="sidebar-link">组合模式</a></li><li><a href="/pages/59338220222/" class="sidebar-link">外观模式</a></li><li><a href="/pages/91241140214/" class="sidebar-link">观察者模式</a></li><li><a href="/pages/48444540254/" class="sidebar-link">模板方法模式</a></li><li><a href="/pages/94547210221/" class="sidebar-link">策略模式</a></li><li><a href="/pages/64541200220/" class="sidebar-link">职责链模式</a></li><li><a href="/pages/15543380238/" class="sidebar-link">状态模式</a></li><li><a href="/pages/73549120212/" class="sidebar-link">迭代器模式</a></li><li><a href="/pages/81151430243/" class="sidebar-link">访问者模式</a></li><li><a href="/pages/87409260226/" class="sidebar-link">备忘录模式</a></li><li><a href="/pages/62611170217/" class="sidebar-link">命令模式</a></li><li><a href="/pages/1021407027/" class="sidebar-link">解释器模式</a></li><li><a href="/pages/56121130213/" aria-current="page" class="active sidebar-link">中介者模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/56121130213/#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/pages/56121130213/#中介者模式" class="sidebar-link">中介者模式</a></li><li class="sidebar-sub-header"><a href="/pages/56121130213/#像观察者模式的中介者模式" class="sidebar-link">像观察者模式的中介者模式</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Other</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"> <div class="theme-vdoing-wrapper bg-style-1"><div class="articleInfo-wrap" data-v-18fb2c02><div class="articleInfo" data-v-18fb2c02><ul class="breadcrumbs" data-v-18fb2c02><li data-v-18fb2c02><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-18fb2c02></a></li> <li data-v-18fb2c02><a href="/categories/?category=%E7%AE%97%E6%B3%95%E4%B8%8E%E8%AE%BE%E8%AE%A1" title="分类" data-v-18fb2c02>
+          算法与设计
+        </a></li> <li data-v-18fb2c02><a href="/categories/?category=%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F" title="分类" data-v-18fb2c02>
+          设计模式
+        </a></li> <!----></ul> <div class="info" data-v-18fb2c02><div title="作者" class="author iconfont icon-touxiang" data-v-18fb2c02><a href="javascript:;" data-v-18fb2c02>aiyoudiao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-18fb2c02><a href="javascript:;" data-v-18fb2c02>2022-02-25</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><!----> <span>
+            中介者模式
+          </span></h1> <div class="theme-vdoing-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>中介者模式属于行为型模式，这个类型的设计模式总结出了  类、对象之间的经典交互方式，将类、对象的行为和使用解耦了，花式的去使用对象的行为来完成特定场景下的功能。</p> <h2 id="中介者模式"><a href="#中介者模式" class="header-anchor">#</a> 中介者模式</h2> <p>使用场景：当遇到多对多关系时，可以考虑使用中介者模式，它可以将多对多的关系梳理成一对一的关系，避免了对象于对象之间的直接关联，中介者模式很好用，通过一个中间层就能实现对象与对象之间的直接通信。</p> <p>理解：这是一种类、对象之间的经典交互方式，将类、对象的行为和使用解耦了。也许你会觉得中介者模式和观察者模式、代理模式有相似的地方，但是中介者模式注重的是将对象与对象之间进行解耦，让对象与对象之间的通信能够通过中间层来处理，这样多对多的关系就能变成1:1:1的关系了。观察者用于处理 1:n这样的关系，也可以优化成n:n这样的关系，它更注重通信的分发处理。代理模式用于将目标隐藏，然后所有操作都通过代理来实现，它注重的是操作的统一和隔离，只有代理类的对象才能真正操作目标。这样一比较 中介者和代理模式很像嘞，但是它们的含义不同噢，从语义上分析，中介者的对象们都是对外开放的，而代理模式的目标对象是不对外开放的，中介者简化关系，代理模式简化操作。</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">namespace</span> action_mode_11 <span class="token punctuation">{</span>
+
+    <span class="token keyword">interface</span> <span class="token class-name">IMediator</span> <span class="token punctuation">{</span>
+
+        <span class="token function">buy</span><span class="token punctuation">(</span>user1<span class="token operator">:</span> Tenant<span class="token punctuation">,</span> user2<span class="token operator">:</span> HouseOwner<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+        <span class="token function">sell</span><span class="token punctuation">(</span>user1<span class="token operator">:</span> HouseOwner<span class="token punctuation">,</span> user2<span class="token operator">:</span> Tenant<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Tenant</span> <span class="token punctuation">{</span>
+
+        name<span class="token operator">:</span> <span class="token builtin">string</span>
+        typeName<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'租客'</span>
+        mediator<span class="token operator">:</span> IMediator
+
+        <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> mediator<span class="token operator">:</span> IMediator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+            <span class="token keyword">this</span><span class="token punctuation">.</span>mediator <span class="token operator">=</span> mediator
+        <span class="token punctuation">}</span>
+
+        <span class="token function">buy</span><span class="token punctuation">(</span>user<span class="token operator">:</span> HouseOwner<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>mediator<span class="token punctuation">.</span><span class="token function">buy</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> user<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">HouseOwner</span> <span class="token punctuation">{</span>
+
+        name<span class="token operator">:</span> <span class="token builtin">string</span>
+        typeName<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'房东'</span>
+        mediator<span class="token operator">:</span> IMediator
+
+        <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> mediator<span class="token operator">:</span> IMediator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+            <span class="token keyword">this</span><span class="token punctuation">.</span>mediator <span class="token operator">=</span> mediator
+        <span class="token punctuation">}</span>
+
+        <span class="token function">sell</span><span class="token punctuation">(</span>user<span class="token operator">:</span> Tenant<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>mediator<span class="token punctuation">.</span><span class="token function">sell</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> user<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Mediator</span> <span class="token keyword">implements</span> <span class="token class-name">IMediator</span> <span class="token punctuation">{</span>
+
+        <span class="token function">buy</span><span class="token punctuation">(</span>user1<span class="token operator">:</span> Tenant<span class="token punctuation">,</span> user2<span class="token operator">:</span> HouseOwner<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+            <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user1<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user1<span class="token punctuation">.</span>typeName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">):我要租房子</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+            <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user2<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user2<span class="token punctuation">.</span>typeName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">):我要出租房子</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">sell</span><span class="token punctuation">(</span>user1<span class="token operator">:</span> HouseOwner<span class="token punctuation">,</span> user2<span class="token operator">:</span> Tenant<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+            <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user1<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user1<span class="token punctuation">.</span>typeName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">):我要出租房子</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+            <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user2<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user2<span class="token punctuation">.</span>typeName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">):我要租房子</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">const</span> mediator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Mediator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> tenant1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Tenant</span><span class="token punctuation">(</span><span class="token string">'小明'</span><span class="token punctuation">,</span> mediator<span class="token punctuation">)</span>
+    <span class="token keyword">const</span> houseOwner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HouseOwner</span><span class="token punctuation">(</span><span class="token string">'老王'</span><span class="token punctuation">,</span> mediator<span class="token punctuation">)</span>
+
+    tenant1<span class="token punctuation">.</span><span class="token function">buy</span><span class="token punctuation">(</span>houseOwner<span class="token punctuation">)</span>
+    houseOwner<span class="token punctuation">.</span><span class="token function">sell</span><span class="token punctuation">(</span>tenant1<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="像观察者模式的中介者模式"><a href="#像观察者模式的中介者模式" class="header-anchor">#</a> 像观察者模式的中介者模式</h2> <p>理解：这样的中介者模式是否像是观察者，但是并不是哟，它是个中介者，房东通过中介者告诉所有租客，租客通过中介者告诉所有房东。而观察者模式是目标发生变化，所有观察者才会发生相应的变化，这是两种不同的含义。</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">namespace</span> action_mode_11_2 <span class="token punctuation">{</span>
+
+    <span class="token keyword">interface</span> <span class="token class-name">IMediator</span> <span class="token punctuation">{</span>
+        tenantList<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>Tenant<span class="token operator">&gt;</span>
+        houseOwnerList<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>HouseOwner<span class="token operator">&gt;</span>
+
+        <span class="token function">buy</span><span class="token punctuation">(</span>user1<span class="token operator">:</span> Tenant<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+        <span class="token function">sell</span><span class="token punctuation">(</span>user1<span class="token operator">:</span> HouseOwner<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Tenant</span> <span class="token punctuation">{</span>
+
+        name<span class="token operator">:</span> <span class="token builtin">string</span>
+        typeName<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'租客'</span>
+        mediator<span class="token operator">:</span> IMediator
+
+        <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> mediator<span class="token operator">:</span> IMediator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+            <span class="token keyword">this</span><span class="token punctuation">.</span>mediator <span class="token operator">=</span> mediator
+            <span class="token keyword">this</span><span class="token punctuation">.</span>mediator<span class="token punctuation">.</span>tenantList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">buy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>mediator<span class="token punctuation">.</span><span class="token function">buy</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">HouseOwner</span> <span class="token punctuation">{</span>
+
+        name<span class="token operator">:</span> <span class="token builtin">string</span>
+        typeName<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'房东'</span>
+        mediator<span class="token operator">:</span> IMediator
+
+        <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> mediator<span class="token operator">:</span> IMediator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+            <span class="token keyword">this</span><span class="token punctuation">.</span>mediator <span class="token operator">=</span> mediator
+            <span class="token keyword">this</span><span class="token punctuation">.</span>mediator<span class="token punctuation">.</span>houseOwnerList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">sell</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>mediator<span class="token punctuation">.</span><span class="token function">sell</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Mediator</span> <span class="token keyword">implements</span> <span class="token class-name">IMediator</span> <span class="token punctuation">{</span>
+
+        tenantList<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>Tenant<span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token builtin">Array</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        houseOwnerList<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>HouseOwner<span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token builtin">Array</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token function">buy</span><span class="token punctuation">(</span>user1<span class="token operator">:</span> Tenant<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+
+            <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user1<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user1<span class="token punctuation">.</span>typeName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">):我要租房子</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>houseOwnerList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>houseOwner <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>houseOwner<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>houseOwner<span class="token punctuation">.</span>typeName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">):我要出租房子</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+        <span class="token punctuation">}</span>
+        <span class="token function">sell</span><span class="token punctuation">(</span>user1<span class="token operator">:</span> HouseOwner<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+
+            <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user1<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user1<span class="token punctuation">.</span>typeName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">):我要出租房子</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>tenantList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>tenant <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tenant<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tenant<span class="token punctuation">.</span>typeName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">):我要租房子</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">const</span> mediator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Mediator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> tenant1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Tenant</span><span class="token punctuation">(</span><span class="token string">'小明'</span><span class="token punctuation">,</span> mediator<span class="token punctuation">)</span>
+    <span class="token keyword">const</span> tenant2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Tenant</span><span class="token punctuation">(</span><span class="token string">'小黄'</span><span class="token punctuation">,</span> mediator<span class="token punctuation">)</span>
+    <span class="token keyword">const</span> tenant3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Tenant</span><span class="token punctuation">(</span><span class="token string">'大正'</span><span class="token punctuation">,</span> mediator<span class="token punctuation">)</span>
+    <span class="token keyword">const</span> houseOwner1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HouseOwner</span><span class="token punctuation">(</span><span class="token string">'老王头'</span><span class="token punctuation">,</span> mediator<span class="token punctuation">)</span>
+    <span class="token keyword">const</span> houseOwner2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HouseOwner</span><span class="token punctuation">(</span><span class="token string">'老李头'</span><span class="token punctuation">,</span> mediator<span class="token punctuation">)</span>
+    <span class="token keyword">const</span> houseOwner3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HouseOwner</span><span class="token punctuation">(</span><span class="token string">'老张头'</span><span class="token punctuation">,</span> mediator<span class="token punctuation">)</span>
+
+    tenant1<span class="token punctuation">.</span><span class="token function">buy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    houseOwner1<span class="token punctuation">.</span><span class="token function">sell</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div></div></div> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F" title="标签">#设计模式</a></div> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">2/25/2022, 3:04:15 AM</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/1021407027/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">解释器模式</div></a> <a href="/pages/02344550255/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">算法类别</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/1021407027/" class="prev">解释器模式</a></span> <span class="next"><a href="/pages/02344550255/"> 算法类别 </a>
+        →
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/1021407027/"><div>解释器模式</div></a> <span>02-25</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/62611170217/"><div>命令模式</div></a> <span>02-25</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/87409260226/"><div>备忘录模式</div></a> <span>02-25</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div> </main></div> <div class="footer"><!----> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2017-2022
+    <span class="link">aiyoudiao 码二</span> <span>备案号：</span> <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" title="备案号">鄂ICP备2022002654号-1</a></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div><!----><div id="VuepressPluginLive2d"></div></div></div>
+    <script src="/assets/js/app.da3805c6.js" defer></script><script src="/assets/js/4.99c98a38.js" defer></script><script src="/assets/js/5.f44a23c5.js" defer></script><script src="/assets/js/50.94811243.js" defer></script><script src="/assets/js/10.1a3be5b3.js" defer></script><script src="/assets/js/12.72af0c84.js" defer></script>
+  </body>
+</html>

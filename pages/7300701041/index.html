@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>排序算法基础 | aiyoudiao</title>
+    <meta name="generator" content="VuePress 1.9.7" />
+    <link rel="icon" href="/img/blog.ico">
+    <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script> <meta name="description" content="码二~">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,gitee,markdown">
+    <meta name="theme-color" content="#11a8cd">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <link rel="preload" href="/assets/css/0.styles.ea2a3732.css" as="style"><link rel="preload" href="/assets/js/app.c6c7eba0.js" as="script"><link rel="preload" href="/assets/js/4.ca94a295.js" as="script"><link rel="preload" href="/assets/js/5.d0d5bad8.js" as="script"><link rel="preload" href="/assets/js/35.172f7a27.js" as="script"><link rel="preload" href="/assets/js/10.7df48824.js" as="script"><link rel="preload" href="/assets/js/12.15a841cb.js" as="script"><link rel="prefetch" href="/assets/js/1.5f9638fa.js"><link rel="prefetch" href="/assets/js/11.0db54f7b.js"><link rel="prefetch" href="/assets/js/13.298118a4.js"><link rel="prefetch" href="/assets/js/14.cb62bfee.js"><link rel="prefetch" href="/assets/js/15.5d606de0.js"><link rel="prefetch" href="/assets/js/16.186fb412.js"><link rel="prefetch" href="/assets/js/17.614b9afc.js"><link rel="prefetch" href="/assets/js/18.8c1807fd.js"><link rel="prefetch" href="/assets/js/19.da1b6a1a.js"><link rel="prefetch" href="/assets/js/2.8f47fb2e.js"><link rel="prefetch" href="/assets/js/20.81716912.js"><link rel="prefetch" href="/assets/js/21.3e255f06.js"><link rel="prefetch" href="/assets/js/22.292b0713.js"><link rel="prefetch" href="/assets/js/23.a93d15b2.js"><link rel="prefetch" href="/assets/js/24.ddc33827.js"><link rel="prefetch" href="/assets/js/25.3f91d4ea.js"><link rel="prefetch" href="/assets/js/26.e17b1e28.js"><link rel="prefetch" href="/assets/js/27.77772e43.js"><link rel="prefetch" href="/assets/js/28.6f9aebac.js"><link rel="prefetch" href="/assets/js/29.295abe76.js"><link rel="prefetch" href="/assets/js/30.3333af9f.js"><link rel="prefetch" href="/assets/js/31.b628decb.js"><link rel="prefetch" href="/assets/js/32.2500cf7f.js"><link rel="prefetch" href="/assets/js/33.c5b5cc76.js"><link rel="prefetch" href="/assets/js/34.033f8397.js"><link rel="prefetch" href="/assets/js/36.d35e94a9.js"><link rel="prefetch" href="/assets/js/37.08f83650.js"><link rel="prefetch" href="/assets/js/38.76963c67.js"><link rel="prefetch" href="/assets/js/39.e9d48264.js"><link rel="prefetch" href="/assets/js/40.9322fe67.js"><link rel="prefetch" href="/assets/js/41.78621162.js"><link rel="prefetch" href="/assets/js/42.3d06e52c.js"><link rel="prefetch" href="/assets/js/43.4b73837a.js"><link rel="prefetch" href="/assets/js/44.c9ee5d36.js"><link rel="prefetch" href="/assets/js/45.3a71afda.js"><link rel="prefetch" href="/assets/js/46.a9691892.js"><link rel="prefetch" href="/assets/js/47.bd3791bd.js"><link rel="prefetch" href="/assets/js/48.94cc4624.js"><link rel="prefetch" href="/assets/js/49.56177217.js"><link rel="prefetch" href="/assets/js/50.649dc58f.js"><link rel="prefetch" href="/assets/js/51.869ba46a.js"><link rel="prefetch" href="/assets/js/52.35d269ca.js"><link rel="prefetch" href="/assets/js/53.54638e1a.js"><link rel="prefetch" href="/assets/js/54.bdf4737b.js"><link rel="prefetch" href="/assets/js/55.e70b8a13.js"><link rel="prefetch" href="/assets/js/56.c9332431.js"><link rel="prefetch" href="/assets/js/57.b37f4c38.js"><link rel="prefetch" href="/assets/js/58.5ae4ac7f.js"><link rel="prefetch" href="/assets/js/59.7cf6d38b.js"><link rel="prefetch" href="/assets/js/6.841b8cef.js"><link rel="prefetch" href="/assets/js/60.24a8be23.js"><link rel="prefetch" href="/assets/js/61.7a92ffe1.js"><link rel="prefetch" href="/assets/js/62.eadcbaba.js"><link rel="prefetch" href="/assets/js/63.39fe0408.js"><link rel="prefetch" href="/assets/js/64.b1f04c24.js"><link rel="prefetch" href="/assets/js/65.1321fdec.js"><link rel="prefetch" href="/assets/js/66.a622daef.js"><link rel="prefetch" href="/assets/js/67.59638d5a.js"><link rel="prefetch" href="/assets/js/68.fd684920.js"><link rel="prefetch" href="/assets/js/69.c5fc1187.js"><link rel="prefetch" href="/assets/js/7.9287b053.js"><link rel="prefetch" href="/assets/js/70.d8374bf5.js"><link rel="prefetch" href="/assets/js/71.76a7dae2.js"><link rel="prefetch" href="/assets/js/72.15092da0.js"><link rel="prefetch" href="/assets/js/73.49154798.js"><link rel="prefetch" href="/assets/js/74.c164acc2.js"><link rel="prefetch" href="/assets/js/75.c65ef9d6.js"><link rel="prefetch" href="/assets/js/76.2ab9fc0c.js"><link rel="prefetch" href="/assets/js/77.74806875.js"><link rel="prefetch" href="/assets/js/78.fbd9e50c.js"><link rel="prefetch" href="/assets/js/79.5704ecc2.js"><link rel="prefetch" href="/assets/js/8.5c651715.js"><link rel="prefetch" href="/assets/js/80.cb6fe6c9.js"><link rel="prefetch" href="/assets/js/81.b6f8378f.js"><link rel="prefetch" href="/assets/js/82.f350af12.js"><link rel="prefetch" href="/assets/js/83.8c12ed3b.js"><link rel="prefetch" href="/assets/js/84.71bad8e7.js"><link rel="prefetch" href="/assets/js/9.a80ff5d3.js"> <link rel="stylesheet" href="/assets/css/0.styles.ea2a3732.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" width="50" height="50" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://p3-passport.byteacctimg.com/img/user-avatar/794fdae4ff249d532da19a3c26d420ed~300x300.image" alt="aiyoudiao" class="logo"> <span class="site-name can-hide">
+      aiyoudiao
+    </span></a> <div class="links"><div class="sky-switch" data-v-3a03d589><label for="toggle" data-v-3a03d589><input id="toggle" type="checkbox" data-v-3a03d589><div data-v-3a03d589></div></label></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><!----> <span class="title" style="display:;">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/6840207027/" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与设计" class="dropdown-title"><!----> <span class="title" style="display:;">算法与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/70741550255/" class="nav-link">
+  LeetCode
+</a></li><li class="dropdown-item"><!----> <a href="/pages/17845450445/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/pages/90132170217/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/pages/50546120212/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02344550255/" class="nav-link">
+  Other
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技能" class="dropdown-title"><!----> <span class="title" style="display:;">技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/82158160216/" class="nav-link">
+  PMP
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41858590259/" class="nav-link">
+  Office
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02359360236/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/pages/73600130213/" class="nav-link">
+  Bash
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="历程" class="dropdown-title"><!----> <span class="title" style="display:;">历程</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/83857320232/" class="nav-link">
+  流年
+</a></li><li class="dropdown-item"><!----> <a href="/pages/93419130213/" class="nav-link">
+  片段
+</a></li><li class="dropdown-item"><!----> <a href="/pages/99744220322/" class="nav-link">
+  读书
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="首页" class="dropdown-title"><!----> <span class="title" style="display:;">首页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">
+  归档
+</a></li><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">
+  分类
+</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">
+  标签
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><!----> <span class="title" style="display:;">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/02657130213/" class="nav-link">
+  简介
+</a></li><li class="dropdown-item"><!----> <a href="/pages/5390102042/" class="nav-link">
+  收藏
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/mar.jpg"> <div class="blogger-info"><h3>码二</h3> <span>扫微信二维码，认识一下码二吧😉。</span></div></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><!----> <span class="title" style="display:;">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/6840207027/" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与设计" class="dropdown-title"><!----> <span class="title" style="display:;">算法与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/70741550255/" class="nav-link">
+  LeetCode
+</a></li><li class="dropdown-item"><!----> <a href="/pages/17845450445/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/pages/90132170217/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/pages/50546120212/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02344550255/" class="nav-link">
+  Other
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技能" class="dropdown-title"><!----> <span class="title" style="display:;">技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/82158160216/" class="nav-link">
+  PMP
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41858590259/" class="nav-link">
+  Office
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02359360236/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/pages/73600130213/" class="nav-link">
+  Bash
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="历程" class="dropdown-title"><!----> <span class="title" style="display:;">历程</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/83857320232/" class="nav-link">
+  流年
+</a></li><li class="dropdown-item"><!----> <a href="/pages/93419130213/" class="nav-link">
+  片段
+</a></li><li class="dropdown-item"><!----> <a href="/pages/99744220322/" class="nav-link">
+  读书
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="首页" class="dropdown-title"><!----> <span class="title" style="display:;">首页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">
+  归档
+</a></li><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">
+  分类
+</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">
+  标签
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><!----> <span class="title" style="display:;">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/02657130213/" class="nav-link">
+  简介
+</a></li><li class="dropdown-item"><!----> <a href="/pages/5390102042/" class="nav-link">
+  收藏
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>LeetCode</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>算法</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/17845450445/" class="sidebar-link">浅谈算法解析</a></li><li><a href="/pages/7300701041/" aria-current="page" class="active sidebar-link">排序算法基础</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/7300701041/#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/pages/7300701041/#选择排序" class="sidebar-link">选择排序</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/7300701041/#代码示例" class="sidebar-link">代码示例</a></li><li class="sidebar-sub-header"><a href="/pages/7300701041/#随机生成算法测试用例" class="sidebar-link">随机生成算法测试用例</a></li><li class="sidebar-sub-header"><a href="/pages/7300701041/#测试算法的性能" class="sidebar-link">测试算法的性能</a></li></ul></li><li class="sidebar-sub-header"><a href="/pages/7300701041/#插入排序" class="sidebar-link">插入排序</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/7300701041/#代码示例-2" class="sidebar-link">代码示例</a></li></ul></li><li class="sidebar-sub-header"><a href="/pages/7300701041/#插入排序法的改进" class="sidebar-link">插入排序法的改进</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/7300701041/#代码示例-3" class="sidebar-link">代码示例</a></li></ul></li><li class="sidebar-sub-header"><a href="/pages/7300701041/#总结" class="sidebar-link">总结</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/7300701041/#扩展" class="sidebar-link">扩展</a></li></ul></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据结构</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>设计模式</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Other</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>vue3设计与实现</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"> <div class="theme-vdoing-wrapper bg-style-1"><div class="articleInfo-wrap" data-v-18fb2c02><div class="articleInfo" data-v-18fb2c02><ul class="breadcrumbs" data-v-18fb2c02><li data-v-18fb2c02><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-18fb2c02></a></li> <li data-v-18fb2c02><a href="/categories/?category=%E7%AE%97%E6%B3%95%E4%B8%8E%E8%AE%BE%E8%AE%A1" title="分类" data-v-18fb2c02>
+          算法与设计
+        </a></li> <li data-v-18fb2c02><a href="/categories/?category=%E7%AE%97%E6%B3%95" title="分类" data-v-18fb2c02>
+          算法
+        </a></li> <!----></ul> <div class="info" data-v-18fb2c02><div title="作者" class="author iconfont icon-touxiang" data-v-18fb2c02><a href="javascript:;" data-v-18fb2c02>aiyoudiao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-18fb2c02><a href="javascript:;" data-v-18fb2c02>2022-04-06</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><!----> <span>
+            排序算法基础
+          </span></h1> <div class="theme-vdoing-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p><code>O(n^2)</code>的排序算法并不是最优的，最优的排序算法是 <code>O(nlogn)</code> 。</p> <p><code>O(n^2)</code>的排序算法相对是比较基础的，因为它是最简单的求解思路，在面临一个问题的时候，都会先尝试用最简单的方法去解决它，这个过程能够加深对问题本身的理解，从而提出更加复杂的解法，或者来优化最开始简单的解法。<br>
+对于一些问题，如果你没有思路的话，先拿出最简单的解法，虽然这个解法可能在效率上有一些问题，先将你这个解法摆出来，在这个过程中你可能会想到一些优化的地方，同时面试官也会看到你解题的路径，这也是一种非常好的解题思路。</p> <p>并非是在所有的场合都去使用 <code>O(nlogn)</code>级别的排序算法的。编码简单，易于实现，是一些简单情景的首选，因为<code>O(n^2)</code>级别的排序算法通常编码比较简单，如果你使用的不是高级的程序设计语言，在底层的情况下类似使用汇编语言，只要性能允许，那么<code>O(n^2)</code>级别的排序算法便于实现，那也是首选。</p> <p>在一些特殊情况下，简单的排序算法也有更优效果。在某些情况下 <code>O(n^2)</code>的排序算法反而比<code>O(nlogn)</code>级别的排序算法更有效。可以通过简单的排序算法的思想衍生出复杂的排序算法，最典型的就是希尔排序，这个排序算法本质上是通过插入排序的思想进行了一次优化衍生而来的。你可能会通过这些简单的排序算法想到一些更好的更优的排序算法。</p> <p>用简单的排序算法来作为子过程，改进更复杂的排序算法，对于一些简单的排序算法，由于它们本身的性质，所以可能能够成为一个子过程，用于改进更加复杂的排序算法。</p> <p>还是那句老话：光看文章能够掌握两成，动手敲代码、动脑思考、画图才可以掌握八成。<a href="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Faiyoudiao%2FMaoDataStructures" target="_blank" rel="noopener noreferrer">源码仓库<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><strong>不要完美主义。掌握好“度”。</strong></p> <p>太过于追求完美会把自己逼的太紧，会产生各种焦虑的心态，最后甚至会怀疑自己，温故而知新，不要停止不前，掌握好这个度，不存在你把那些你认为完全掌握了，然后就成了某一个领域的专家，相反一旦你产生很浓厚的厌恶感，那么就意味着你即将会放弃或者已经选择了放弃，虽然你之前想把它做到 100 分，但是由于你的放弃让它变为 0 分。</p> <p>学习本着自己的目标去。不要在学的过程中偏离了自己的目标。要分清主次。
+难的东西，你可以慢慢的回头看一看。那样才会更加的柳暗花明，更能提升自己的收获。</p> <h2 id="选择排序"><a href="#选择排序" class="header-anchor">#</a> 选择排序</h2> <p>选择排序是<code>O(n^2)</code>级别的排序算法。</p> <p>它的思想是两轮循环，分内轮和外轮。外轮每一次都会将数组中最小的元素的索引与当前轮数作为索引这两个索引位置的元素进行交换。内轮是遍历整个数组，将当前数组中最小的元素的索引求出来，用于在内轮循环结束后可以得到这个索引，从而进行数组元素位置的交换。等外轮循环结束后，排序就完成了。<br>
+当然你可以在内轮循环中求出数组中最大元素的索引，外轮循环每一轮都会设置默认最小元素的索引，值为外轮循环的轮数，而内轮循环起始索引值为外轮循环的轮数+1。在内轮循环中进行判断，与最小值索引位置的元素进行比较，谁小，那么最小值索引就变成这个元素的索引，直到当前内轮循环结束位置。<br>
+因为求出了当前内轮循环中最小值的索引了，然后交换两个索引位置的元素，之后继续开始下一轮比较，周而复始，直到外轮循环结束。</p> <p>它的原理是 其实就是有两重循环，外轮是用来控制轮数，内轮循环用来遍历数组，内轮循环 不断的求出数组中最小值或最大值的元素索引。等内轮循环结束之后，就让外轮中每一轮索引位置的数组元素，和内轮循环求出来的最大或最小索引的数据元素交换一下位置，不断的让小的元素或者大的元素往前排，这样就达到了排序的效果。<br>
+每一次都是在剩下的数组元素中找出剩余的最大元素或最小元素，之前已经交换到最前面的元素就不再参与了，因为每一次都是数组中剩余的元素进行比较。<br>
+取其中最大或者最小的值放到前面，内轮循环遍历完了之后，就进行<code>arr[i]</code>和<code>arr[minIndex]</code>交换位置。选择排序的<code>选择</code>二字，就是不断的选择数组元素中最小值或最大值的索引，然后让它们往前排。</p> <h3 id="代码示例"><a href="#代码示例" class="header-anchor">#</a> 代码示例</h3> <p><strong>SortAlgorithms</strong></p> <div class="language-js extra-class"><pre class="language-js"><code>
+<span class="token comment">// 排序算法</span>
+<span class="token keyword">class</span> <span class="token class-name">SortAlgorithms</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SortTestHelper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 选择排序</span>
+  <span class="token function">selectionSort</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">let</span> minIndex <span class="token operator">=</span> i<span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> j <span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token punctuation">[</span>minIndex<span class="token punctuation">]</span><span class="token punctuation">)</span>
+          minIndex <span class="token operator">=</span> j<span class="token punctuation">;</span>
+
+      <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper<span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> i<span class="token punctuation">,</span> minIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token comment">// for</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="随机生成算法测试用例"><a href="#随机生成算法测试用例" class="header-anchor">#</a> 随机生成算法测试用例</h3> <p><strong>SortTestHelper</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 排序测试</span>
+<span class="token keyword">class</span> <span class="token class-name">SortTestHelper</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token comment">// 生成随机数  前提： 指定范围内生成 有效随机整数 -</span>
+  <span class="token function">generateRandomByBound</span> <span class="token punctuation">(</span><span class="token parameter">min<span class="token punctuation">,</span> max</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// // 获取 1 - 10 之间的 整数</span>
+    <span class="token comment">// const randomNumber = Math.floor(Math.random() * 10) + 1; </span>
+
+    <span class="token comment">// // 获取 1 - min 之间的 整数</span>
+    <span class="token comment">// const randomNumber2 = Math.floor(Math.random() * min) + 1;</span>
+    
+    <span class="token comment">// 获取 min - max 之间的值</span>
+    <span class="token comment">// const result = Math.floor(Math.random() * (max + 1 - min)) + min;</span>
+
+    <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>max <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">-</span> min<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> min<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 生成随机重复元素数组 前提：指定数组长度范围 并且 指定 数组元素范围</span>
+  <span class="token function">generateRandomArrayByLengthAndReapetArea</span> <span class="token punctuation">(</span><span class="token parameter">length<span class="token punctuation">,</span> rangeLeft<span class="token punctuation">,</span> rangeRight</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">generateRandomByBound</span><span class="token punctuation">(</span>rangeLeft<span class="token punctuation">,</span> rangeRight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 生成随机数组  前提：指点数组长度范围</span>
+  <span class="token function">generateRandomArrayByLength</span> <span class="token punctuation">(</span><span class="token parameter">length</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">generateRandomArrayByLengthAndReapetArea</span><span class="token punctuation">(</span>length<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 交换两个数组元素的位置 -</span>
+  <span class="token function">swap</span> <span class="token punctuation">(</span><span class="token parameter">array<span class="token punctuation">,</span> indexA<span class="token punctuation">,</span> indexB</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> temp <span class="token operator">=</span> array<span class="token punctuation">[</span>indexA<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    array<span class="token punctuation">[</span>indexA<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>indexB<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    array<span class="token punctuation">[</span>indexB<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 生成近乎有序的数组 前提：指定数组长度范围 并且 指定随机数组元素 交换次数</span>
+  <span class="token function">generateNearlyOrderedArray</span> <span class="token punctuation">(</span><span class="token parameter">length<span class="token punctuation">,</span> swapTimes</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+    
+    <span class="token keyword">const</span> random <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>generateRandomByBound<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> indexA <span class="token operator">=</span> indexB <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> swapTimes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      indexA <span class="token operator">=</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      indexB <span class="token operator">=</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> indexA<span class="token punctuation">,</span> indexB<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 判断一个数组是否是有序 是否是升序 从小到大</span>
+  <span class="token function">isSorted</span> <span class="token punctuation">(</span><span class="token parameter">array<span class="token punctuation">,</span> isAsc <span class="token operator">=</span> <span class="token boolean">true</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isAsc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 升序 从小到大</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+          <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 倒序  从大到小</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+          <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 打印数组中的内容  指定打印的风格</span>
+  <span class="token function">printArray</span> <span class="token punctuation">(</span><span class="token parameter">array<span class="token punctuation">,</span> style</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> info <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    info <span class="token operator">+=</span> <span class="token string">&quot;[ &quot;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      info <span class="token operator">+=</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      info <span class="token operator">+=</span> <span class="token string">&quot;, &quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+      info <span class="token operator">+=</span> array<span class="token punctuation">[</span>array<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+      info <span class="token operator">+=</span> <span class="token string">&quot;empty.&quot;</span><span class="token punctuation">;</span>
+
+    info <span class="token operator">+=</span> <span class="token string">&quot; ]&quot;</span><span class="token punctuation">;</span>
+
+    <span class="token function">style</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h3 id="测试算法的性能"><a href="#测试算法的性能" class="header-anchor">#</a> 测试算法的性能</h3> <p>写一个非常重要的测试算法性能的函数。测试之后发现十万数据量比一万数据量的性能相差一百倍。选择排序的时间复杂度是<code>O(n^2)</code>级别的，也就是消耗的时间和数组之间是成一个平方关系的。在一张横轴是数据量而纵轴是运行时间的关系图中可以看出，它们之间的关系是一个二次曲线这样的一个关系。</p> <p><code>O(n^2)</code>级别的排序算法在某些情况下也是非常有用的。</p> <p><strong>Main</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// main 函数</span>
+<span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/////////////////////////////////////////////////////////////</span>
+    <span class="token comment">// 创建性能测试对象                                       ///</span>
+    <span class="token keyword">const</span> performanceTest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PerformanceTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">///</span>
+    <span class="token comment">// 创建一个算法对象                                    ///</span>
+    <span class="token keyword">const</span> sortAlgorithms <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SortAlgorithms</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">///</span>
+    <span class="token comment">// 创建一个排序测试辅助对象                          ///</span>
+    <span class="token keyword">const</span> sortTestHeplper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SortTestHelper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">///</span>
+    <span class="token comment">// 指定当前this对象                               ///</span>
+    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>                              <span class="token comment">///</span>
+    <span class="token comment">//////////////////////////////////////////////////</span>
+
+    <span class="token comment">// 测试选择排序</span>
+    <span class="token keyword">function</span> <span class="token function">selectionSortTest</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+      <span class="token comment">// 生成一个随机数组</span>
+      <span class="token keyword">const</span> arr <span class="token operator">=</span> sortTestHeplper<span class="token punctuation">.</span><span class="token function">generateRandomArrayByLengthAndReapetArea</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 打印排序前的数组</span>
+      sortTestHeplper<span class="token punctuation">.</span><span class="token function">printArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        that<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 选择排序</span>
+      sortAlgorithms<span class="token punctuation">.</span><span class="token function">selectionSort</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 打印排序后的数组</span>
+      sortTestHeplper<span class="token punctuation">.</span><span class="token function">printArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        that<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    that<span class="token punctuation">.</span><span class="token function">alterLine</span><span class="token punctuation">(</span><span class="token string">&quot;Seletion Sort Area&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">selectionSortTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 将内容显示在页面上</span>
+  <span class="token function">show</span> <span class="token punctuation">(</span><span class="token parameter">content</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>content<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;br /&gt;&lt;br /&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 展示分割线</span>
+  <span class="token function">alterLine</span> <span class="token punctuation">(</span><span class="token parameter">title</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> line <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">--------------------</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>title<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">----------------------</span><span class="token template-punctuation string">`</span></span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>line<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;br /&gt;&lt;br /&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>SortAlgorithms</strong></p> <div class="language-js extra-class"><pre class="language-js"><code>
+<span class="token comment">// 排序算法</span>
+<span class="token keyword">class</span> <span class="token class-name">SortAlgorithms</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SortTestHelper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 选择排序</span>
+  <span class="token function">selectionSort</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">let</span> minIndex <span class="token operator">=</span> i<span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> j <span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token punctuation">[</span>minIndex<span class="token punctuation">]</span><span class="token punctuation">)</span>
+          minIndex <span class="token operator">=</span> j<span class="token punctuation">;</span>
+
+      <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper<span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> i<span class="token punctuation">,</span> minIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token comment">// for</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p><strong>PerformanceTest</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 性能测试</span>
+<span class="token keyword">class</span> <span class="token class-name">PerformanceTest</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token comment">// 对比堆 主要对比 使用heapify 与 不使用heapify时的性能</span>
+  <span class="token function">testHeap</span> <span class="token punctuation">(</span><span class="token parameter">heap<span class="token punctuation">,</span> array<span class="token punctuation">,</span> isHeapify</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> startTime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 是否支持 heapify</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isHeapify<span class="token punctuation">)</span>
+      heap<span class="token punctuation">.</span><span class="token function">heapify</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> element <span class="token keyword">of</span> array<span class="token punctuation">)</span>
+        heap<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;heap size:&quot;</span> <span class="token operator">+</span> heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;\r\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token string">&quot;heap size:&quot;</span> <span class="token operator">+</span> heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;&lt;br /&gt;&lt;br /&gt;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 使用数组取值</span>
+    <span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> heap<span class="token punctuation">.</span><span class="token function">extractMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+      <span class="token string">&quot;Array size:&quot;</span> <span class="token operator">+</span> arr<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token string">&quot;，heap size:&quot;</span> <span class="token operator">+</span> heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;\r\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token punctuation">(</span>
+      <span class="token string">&quot;Array size:&quot;</span> <span class="token operator">+</span> arr<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token string">&quot;，heap size:&quot;</span> <span class="token operator">+</span> heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;&lt;br /&gt;&lt;br /&gt;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 检验一下是否符合要求</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;error.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+      <span class="token string">&quot;test heap completed.&quot;</span> <span class="token operator">+</span> <span class="token string">&quot;\r\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token string">&quot;test heap completed.&quot;</span> <span class="token operator">+</span> <span class="token string">&quot;&lt;br /&gt;&lt;br /&gt;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> endTime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">calcTime</span><span class="token punctuation">(</span>endTime <span class="token operator">-</span> startTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 计算运行的时间，转换为 天-小时-分钟-秒-毫秒</span>
+  <span class="token function">calcTime</span> <span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">//获取距离的天数</span>
+    <span class="token keyword">var</span> day <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>result <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">24</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//获取距离的小时数</span>
+    <span class="token keyword">var</span> hours <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>result <span class="token operator">/</span> <span class="token punctuation">(</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token comment">//获取距离的分钟数</span>
+    <span class="token keyword">var</span> minutes <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>result <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//获取距离的秒数</span>
+    <span class="token keyword">var</span> seconds <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>result <span class="token operator">/</span> <span class="token number">1000</span> <span class="token operator">%</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//获取距离的毫秒数</span>
+    <span class="token keyword">var</span> milliSeconds <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>result <span class="token operator">%</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 计算时间</span>
+    day <span class="token operator">=</span> day <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">&quot;0&quot;</span> <span class="token operator">+</span> day <span class="token operator">:</span> day<span class="token punctuation">;</span>
+    hours <span class="token operator">=</span> hours <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">&quot;0&quot;</span> <span class="token operator">+</span> hours <span class="token operator">:</span> hours<span class="token punctuation">;</span>
+    minutes <span class="token operator">=</span> minutes <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">&quot;0&quot;</span> <span class="token operator">+</span> minutes <span class="token operator">:</span> minutes<span class="token punctuation">;</span>
+    seconds <span class="token operator">=</span> seconds <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">&quot;0&quot;</span> <span class="token operator">+</span> seconds <span class="token operator">:</span> seconds<span class="token punctuation">;</span>
+    milliSeconds <span class="token operator">=</span> milliSeconds <span class="token operator">&lt;</span> <span class="token number">100</span> <span class="token operator">?</span>
+      <span class="token punctuation">(</span>milliSeconds <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">&quot;00&quot;</span> <span class="token operator">+</span> milliSeconds <span class="token operator">:</span> <span class="token string">&quot;0&quot;</span> <span class="token operator">+</span> milliSeconds<span class="token punctuation">)</span> <span class="token operator">:</span> milliSeconds<span class="token punctuation">;</span>
+  
+    <span class="token comment">// 输出耗时字符串</span>
+    result <span class="token operator">=</span> day <span class="token operator">+</span> <span class="token string">&quot;天&quot;</span> <span class="token operator">+</span> hours <span class="token operator">+</span> <span class="token string">&quot;小时&quot;</span> <span class="token operator">+</span> minutes <span class="token operator">+</span> <span class="token string">&quot;分&quot;</span> <span class="token operator">+</span>
+     seconds <span class="token operator">+</span> <span class="token string">&quot;秒&quot;</span> <span class="token operator">+</span> milliSeconds <span class="token operator">+</span> <span class="token string">&quot;毫秒&quot;</span> <span class="token operator">+</span> 
+     <span class="token string">&quot;  &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt;  总毫秒数：&quot;</span> <span class="token operator">+</span> result<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 自定义对比</span>
+  <span class="token function">testCustomFn</span> <span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> startTime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> endTime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">calcTime</span><span class="token punctuation">(</span>endTime <span class="token operator">-</span> startTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>SortTestHelper</strong></p> <div class="language-js extra-class"><pre class="language-js"><code>
+<span class="token comment">// 排序测试</span>
+<span class="token keyword">class</span> <span class="token class-name">SortTestHelper</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token comment">// 生成随机数  前提： 指定范围内生成 有效随机整数 -</span>
+  <span class="token function">generateRandomByBound</span> <span class="token punctuation">(</span><span class="token parameter">min<span class="token punctuation">,</span> max</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// // 获取 1 - 10 之间的 整数</span>
+    <span class="token comment">// const randomNumber = Math.floor(Math.random() * 10) + 1; </span>
+
+    <span class="token comment">// // 获取 1 - min 之间的 整数</span>
+    <span class="token comment">// const randomNumber2 = Math.floor(Math.random() * min) + 1;</span>
+    
+    <span class="token comment">// 获取 min - max 之间的值</span>
+    <span class="token comment">// const result = Math.floor(Math.random() * (max + 1 - min)) + min;</span>
+
+    <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>max <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">-</span> min<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> min<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 生成随机重复元素数组 前提：指定数组长度范围 并且 指定 数组元素范围</span>
+  <span class="token function">generateRandomArrayByLengthAndReapetArea</span> <span class="token punctuation">(</span><span class="token parameter">length<span class="token punctuation">,</span> rangeLeft<span class="token punctuation">,</span> rangeRight</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">generateRandomByBound</span><span class="token punctuation">(</span>rangeLeft<span class="token punctuation">,</span> rangeRight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 生成随机数组  前提：指点数组长度范围</span>
+  <span class="token function">generateRandomArrayByLength</span> <span class="token punctuation">(</span><span class="token parameter">length</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">generateRandomArrayByLengthAndReapetArea</span><span class="token punctuation">(</span>length<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 交换两个数组元素的位置 -</span>
+  <span class="token function">swap</span> <span class="token punctuation">(</span><span class="token parameter">array<span class="token punctuation">,</span> indexA<span class="token punctuation">,</span> indexB</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> temp <span class="token operator">=</span> array<span class="token punctuation">[</span>indexA<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    array<span class="token punctuation">[</span>indexA<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>indexB<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    array<span class="token punctuation">[</span>indexB<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 生成近乎有序的数组 前提：指定数组长度范围 并且 指定随机数组元素 交换次数</span>
+  <span class="token function">generateNearlyOrderedArray</span> <span class="token punctuation">(</span><span class="token parameter">length<span class="token punctuation">,</span> swapTimes</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+    
+    <span class="token keyword">const</span> random <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>generateRandomByBound<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> indexA <span class="token operator">=</span> indexB <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> swapTimes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      indexA <span class="token operator">=</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      indexB <span class="token operator">=</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> indexA<span class="token punctuation">,</span> indexB<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 判断一个数组是否是有序 是否是升序 从小到大</span>
+  <span class="token function">isSorted</span> <span class="token punctuation">(</span><span class="token parameter">array<span class="token punctuation">,</span> isAsc <span class="token operator">=</span> <span class="token boolean">true</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isAsc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 升序 从小到大</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+          <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 倒序  从大到小</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+          <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 打印数组中的内容  指定打印的风格</span>
+  <span class="token function">printArray</span> <span class="token punctuation">(</span><span class="token parameter">array<span class="token punctuation">,</span> style</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> info <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    info <span class="token operator">+=</span> <span class="token string">&quot;[ &quot;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      info <span class="token operator">+=</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      info <span class="token operator">+=</span> <span class="token string">&quot;, &quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+      info <span class="token operator">+=</span> array<span class="token punctuation">[</span>array<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+      info <span class="token operator">+=</span> <span class="token string">&quot;empty.&quot;</span><span class="token punctuation">;</span>
+
+    info <span class="token operator">+=</span> <span class="token string">&quot; ]&quot;</span><span class="token punctuation">;</span>
+
+    <span class="token function">style</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="插入排序"><a href="#插入排序" class="header-anchor">#</a> 插入排序</h2> <p>插入排序是<code>O(n^2)</code>级别的排序算法，插入排序的思想其实非常简单。</p> <p>在玩扑克牌的时候，整理牌的思想大体上就是插入排序，就是看后面牌的每一张牌，然后把牌插入到合适的位置，当你对最后一张牌做完这个操作之后，手里的正副扑克牌也就排序完成了。</p> <p><strong>插入排序和选择排序的区别</strong></p> <p>这二者最大的区别，插入排序对于内轮循环它是可以提前结束的，只需要满足某种条件就可以做到提前结束。但是选择排序不管数组是什么样子的，为了要保证找到每一轮中的最小的元素，必须从头到尾的将剩下的整个数组重头到尾扫描一遍，根本没有提前终止的机会。<br>
+正因为如此，插入排序理论上要比选择排序要快一些，但实际上，插入排序要比选择排序要慢，所以第一版的插入排序还需要进行优化。</p> <h3 id="代码示例-2"><a href="#代码示例-2" class="header-anchor">#</a> 代码示例</h3> <p><strong>SortAlgorithms</strong></p> <div class="language-js extra-class"><pre class="language-js"><code>
+<span class="token comment">// 排序算法</span>
+<span class="token keyword">class</span> <span class="token class-name">SortAlgorithms</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SortTestHelper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 插入排序</span>
+  <span class="token function">insertionSort</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> swap <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper<span class="token punctuation">.</span>swap<span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+          <span class="token function">swap</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+          <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 插入排序2 优化内循环的判断，直接放入循环条件中</span>
+  <span class="token function">insertionSort2</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> swap <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper<span class="token punctuation">.</span>swap<span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token function">swap</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 插入排序3 优化 交换两个索引位置的元素这个操作</span>
+  <span class="token function">insertionSort3</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> swap <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper<span class="token punctuation">.</span>swap<span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 存一下当前的值</span>
+      <span class="token keyword">const</span> current <span class="token operator">=</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token comment">// 在外面声明索引，以便在内轮循环下面进行赋值操作</span>
+      <span class="token keyword">let</span> j<span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> current <span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token comment">// 只要比current大的元素 都向后移动一位，</span>
+         <span class="token comment">// j 索引 会变成  比current大的元素的原索引 (j - 1)</span>
+          array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 插入时 直接覆盖，没有关系，因为原来的元素以后挪到后一位去了。</span>
+      array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> current<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="插入排序法的改进"><a href="#插入排序法的改进" class="header-anchor">#</a> 插入排序法的改进</h2> <p>现在实现的插入排序法还需要再进行优化，虽然插入排序法可以进行提前进行终止循环，但是对比结果是选择排序要比插入排序快一些，所以自己实现的插入排序法还有的优化。</p> <p>之所以插入排序法比选择排序法要慢，这是因为插入排序法在内循环遍历的同时，还不停的再进行交换。而选择排序法，在内循环遍历的同时只是获取最小元素索引，它是在外循环中内循环的后面才进行交换的，所以选择排序才比插入排序快一些，快在交换这里，因为每一次交换都有三次赋值的操作。</p> <p>插入排序法原理：插入排序法的外轮循环是从前往后的，内轮循环是从当前往前的。最初是只需要判断当前索引位置的元素是否小于前一位索引的元素，如果小的话才需要进行交换，否则就可以直接终止本次内轮循环了。<br>
+因为外轮循环是从前往后的，当前前面一位元素如果不大于当前元素，那么当前前面一位元素的再前面一位元素更加不会大于当前元素的，因此，插入排序才有提前终止本轮内轮循环的条件。</p> <p>插入排序优化原理：如果当前索引位置的元素小于前一位索引的元素，那么就让前一位索引位置的元素往后挪动一位，周而复始，直到挪不动了，本次内循环就结束了。<br>
+在外循环中内循环后面就可以把原当前索引位置的元素放到对应的位置中。没有了交换操作还可以提前终止循环，只是增加了挪动一下元素的操作和内轮循环下面的的一次赋值操作，大大提高了性能，现在插入排序法比选择排序法快一倍。<br>
+提前终止是插入排序法的一个非常非常重要的性质，它是一旦找到合适的位置就会提前终止，如果这个数组一开始就是接近有序，那么插入排序法可以很快的找到合适的位置然后提前终止循环，那么插入排序法就会非常的快。</p> <p>插入排序对于有序的速度甚至比<code>O(nlogn)</code>级别的排序算法还要快。这也就是插入排序非常重要的实际意义，因为很多时候处理的真实数据就是近乎有序的。<br>
+比如说一套系统的日志，但是有可能在中间产生了一些错误，或者有一些任务时间过长，所以存在几个无序的元素，那么这个时候使用插入排序，性能会更加的好。在最优的情况下，当你排序的内容是一个完全有序的数组的时候，插入排序将会变成一个O(n)级别的算法。<br>
+因为内轮循环每一次都是执行一下，每一次都发现当前位置就是合适的位置，直接结束内轮循环了，进行下一次外轮循环，也正是这个元素，插入排序在更加复杂的排序算法中会作为一个子过程来进行优化。</p> <p>并不是<code>O(n^2)</code>级别的排序算法都是一无是处的，在某一些情况下它们也是非常有效的。</p> <h3 id="代码示例-3"><a href="#代码示例-3" class="header-anchor">#</a> 代码示例</h3> <p><strong>SortAlgorithms</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 排序算法</span>
+<span class="token keyword">class</span> <span class="token class-name">SortAlgorithms</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SortTestHelper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 选择排序</span>
+  <span class="token function">selectionSort</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> swap <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper<span class="token punctuation">.</span>swap<span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">let</span> minIndex <span class="token operator">=</span> i<span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> j <span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token punctuation">[</span>minIndex<span class="token punctuation">]</span><span class="token punctuation">)</span>
+          minIndex <span class="token operator">=</span> j<span class="token punctuation">;</span>
+
+      <span class="token function">swap</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> i<span class="token punctuation">,</span> minIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token comment">// for</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 插入排序</span>
+  <span class="token function">insertionSort</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> swap <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper<span class="token punctuation">.</span>swap<span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+          <span class="token function">swap</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+          <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 插入排序2 优化内循环的判断，直接放入循环条件中</span>
+  <span class="token function">insertionSort2</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> swap <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper<span class="token punctuation">.</span>swap<span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token function">swap</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 插入排序3 优化 交换两个索引位置的元素这个操作</span>
+  <span class="token function">insertionSort3</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> swap <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper<span class="token punctuation">.</span>swap<span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 存一下当前的值</span>
+      <span class="token keyword">const</span> current <span class="token operator">=</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token comment">// 在外面声明索引，以便在内轮循环下面进行赋值操作</span>
+      <span class="token keyword">let</span> j<span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> current <span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token comment">// 只要比current大的元素 都向后移动一位，</span>
+         <span class="token comment">// j 索引 会变成  比current大的元素的原索引 (j - 1)</span>
+          array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 插入时 直接覆盖，没有关系，因为原来的元素以后挪到后一位去了。</span>
+      array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> current<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 插入排序3 优化循环操作， 将for循环改成 while循环</span>
+  <span class="token function">insertionSort4</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> len <span class="token operator">=</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> swap <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHeplper<span class="token punctuation">.</span>swap<span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 存一下当前的值</span>
+      <span class="token keyword">const</span> current <span class="token operator">=</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token comment">// 在外面声明索引，以便在内轮循环下面进行赋值操作</span>
+      <span class="token keyword">let</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> array<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> current<span class="token punctuation">)</span>
+        array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token operator">--</span> j<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">// 让前面的元素向后移动一位，j索引会变成原来前面元素的索引</span>
+
+      <span class="token comment">// 插入时 直接覆盖</span>
+      array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> current<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>Main</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// main 函数</span>
+<span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/////////////////////////////////////////////////////////////</span>
+    <span class="token comment">// 创建性能测试对象                                       ///</span>
+    <span class="token keyword">const</span> performanceTest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PerformanceTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">///</span>
+    <span class="token comment">// 创建一个算法对象                                    ///</span>
+    <span class="token keyword">const</span> sortAlgorithms <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SortAlgorithms</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">///</span>
+    <span class="token comment">// 创建一个排序测试辅助对象                          ///</span>
+    <span class="token keyword">const</span> sortTestHeplper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SortTestHelper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">///</span>
+    <span class="token comment">// 指定当前this对象                               ///</span>
+    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>                              <span class="token comment">///</span>
+    <span class="token comment">//////////////////////////////////////////////////</span>
+
+    <span class="token punctuation">{</span>
+      <span class="token comment">// 测试选择排序</span>
+      <span class="token keyword">function</span> <span class="token function">selectionSortTest</span> <span class="token punctuation">(</span><span class="token parameter">selectionSortVersion</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token comment">// 生成一个随机数组</span>
+        <span class="token keyword">const</span> arr <span class="token operator">=</span> sortTestHeplper<span class="token punctuation">.</span><span class="token function">generateRandomArrayByLengthAndReapetArea</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 打印排序前的数组</span>
+        sortTestHeplper<span class="token punctuation">.</span><span class="token function">printArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          that<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 选择排序</span>
+        <span class="token function">selectionSortVersion</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 打印排序后的数组</span>
+        sortTestHeplper<span class="token punctuation">.</span><span class="token function">printArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          that<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// that.alterLine(&quot;Seletion Sort Area&quot;);</span>
+      <span class="token comment">// // selectionSortTest((sortAlgorithms.selectionSort).bind(sortAlgorithms));</span>
+      <span class="token comment">// selectionSortTest((arr) =&gt; sortAlgorithms.selectionSort(arr));</span>
+      
+      <span class="token comment">// 测试选择排序</span>
+      <span class="token keyword">function</span> <span class="token function">insertionSortTest</span> <span class="token punctuation">(</span><span class="token parameter">insertionSortVersion</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token comment">// 生成一个随机数组</span>
+        <span class="token keyword">const</span> arr <span class="token operator">=</span> sortTestHeplper<span class="token punctuation">.</span><span class="token function">generateRandomArrayByLengthAndReapetArea</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 打印排序前的数组</span>
+        sortTestHeplper<span class="token punctuation">.</span><span class="token function">printArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          that<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 选择排序</span>
+        <span class="token function">insertionSortVersion</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 打印排序后的数组</span>
+        sortTestHeplper<span class="token punctuation">.</span><span class="token function">printArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          that<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// that.alterLine(&quot;Insertion Sort 1 Area&quot;);</span>
+      <span class="token comment">// insertionSortTest((arr) =&gt; sortAlgorithms.insertionSort(arr));</span>
+
+      <span class="token comment">// that.alterLine(&quot;Insertion Sort 2 Area&quot;);</span>
+      <span class="token comment">// insertionSortTest((arr) =&gt; sortAlgorithms.insertionSort2(arr));</span>
+
+      <span class="token comment">// that.alterLine(&quot;Insertion Sort 3 Area&quot;);</span>
+      <span class="token comment">// insertionSortTest((arr) =&gt; sortAlgorithms.insertionSort3(arr));</span>
+
+      <span class="token comment">// that.alterLine(&quot;Insertion Sort 4 Area&quot;);</span>
+      <span class="token comment">// insertionSortTest((arr) =&gt; sortAlgorithms.insertionSort4(arr));</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 测试排序算法的性能</span>
+    <span class="token keyword">function</span> <span class="token function">testSortPerformance</span> <span class="token punctuation">(</span><span class="token parameter">sortVersion<span class="token punctuation">,</span> array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 性能测试</span>
+      <span class="token keyword">const</span> info <span class="token operator">=</span> performanceTest<span class="token punctuation">.</span><span class="token function">testSort</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> sortVersion<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// 返回测试信息</span>
+      <span class="token keyword">return</span> info<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">100000</span><span class="token punctuation">;</span>
+    <span class="token comment">// 完全随机</span>
+    <span class="token keyword">const</span> array <span class="token operator">=</span> sortTestHeplper<span class="token punctuation">.</span><span class="token function">generateRandomArrayByLengthAndReapetArea</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 近乎有序的数组</span>
+    <span class="token keyword">const</span> swapTimes <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> nearlyArray <span class="token operator">=</span> sortTestHeplper<span class="token punctuation">.</span><span class="token function">generateNearlyOrderedArray</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> swapTimes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 大量重复元素的数组</span>
+    <span class="token keyword">const</span> repeat <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> repeatArray <span class="token operator">=</span> sortTestHeplper<span class="token punctuation">.</span><span class="token function">generateRandomArrayByLengthAndReapetArea</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> repeat<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 根据不同类型的数组来测试性能</span>
+    <span class="token keyword">function</span> <span class="token function">testArrayPerformance</span> <span class="token punctuation">(</span><span class="token parameter">arrayVersion</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      that<span class="token punctuation">.</span><span class="token function">alterLine</span><span class="token punctuation">(</span><span class="token string">&quot;Seletion Sort Area&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> seletionSortInfo <span class="token operator">=</span> <span class="token function">testSortPerformance</span><span class="token punctuation">(</span>sortAlgorithms<span class="token punctuation">.</span>selectionSort<span class="token punctuation">,</span> arrayVersion<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      that<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>seletionSortInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      that<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>seletionSortInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      that<span class="token punctuation">.</span><span class="token function">alterLine</span><span class="token punctuation">(</span><span class="token string">&quot;Insertion Sort 1 Area&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> insertionSort1Info <span class="token operator">=</span> <span class="token function">testSortPerformance</span><span class="token punctuation">(</span>sortAlgorithms<span class="token punctuation">.</span>insertionSort<span class="token punctuation">,</span> arrayVersion<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      that<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>insertionSort1Info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      that<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>insertionSort1Info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      that<span class="token punctuation">.</span><span class="token function">alterLine</span><span class="token punctuation">(</span><span class="token string">&quot;Insertion Sort 2 Area&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> insertionSort2Info <span class="token operator">=</span> <span class="token function">testSortPerformance</span><span class="token punctuation">(</span>sortAlgorithms<span class="token punctuation">.</span>insertionSort2<span class="token punctuation">,</span> arrayVersion<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      that<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>insertionSort2Info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      that<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>insertionSort2Info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      that<span class="token punctuation">.</span><span class="token function">alterLine</span><span class="token punctuation">(</span><span class="token string">&quot;Insertion Sort 3 Area&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> insertionSort3Info <span class="token operator">=</span> <span class="token function">testSortPerformance</span><span class="token punctuation">(</span>sortAlgorithms<span class="token punctuation">.</span>insertionSort3<span class="token punctuation">,</span> arrayVersion<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      that<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>insertionSort3Info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      that<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>insertionSort3Info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      that<span class="token punctuation">.</span><span class="token function">alterLine</span><span class="token punctuation">(</span><span class="token string">&quot;Insertion Sort 4 Area&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> insertionSort4Info <span class="token operator">=</span> <span class="token function">testSortPerformance</span><span class="token punctuation">(</span>sortAlgorithms<span class="token punctuation">.</span>insertionSort4<span class="token punctuation">,</span> arrayVersion<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      that<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>insertionSort4Info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      that<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>insertionSort4Info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    that<span class="token punctuation">.</span><span class="token function">alertLine</span><span class="token punctuation">(</span><span class="token string">&quot;All Random Array Area&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">/**
+  --------------------Seletion Sort Area----------------------
+  00天00小时00分16秒326毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：16326
+
+  --------------------Insertion Sort 1 Area----------------------
+  00天00小时00分09秒384毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：9384
+
+  --------------------Insertion Sort 2 Area----------------------
+  00天00小时00分09秒367毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：9367
+
+  --------------------Insertion Sort 3 Area----------------------
+  00天00小时00分06秒850毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：6850
+
+  --------------------Insertion Sort 4 Area----------------------
+  00天00小时00分07秒386毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：7386
+  **/</span>
+    <span class="token function">testArrayPerformance</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    that<span class="token punctuation">.</span><span class="token function">alertLine</span><span class="token punctuation">(</span><span class="token string">&quot;Nearly Ordered Area&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment">/**
+  --------------------Seletion Sort Area----------------------
+  00天00小时00分14秒486毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：14486
+
+  --------------------Insertion Sort 1 Area----------------------
+  00天00小时00分00秒029毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：29
+
+  --------------------Insertion Sort 2 Area----------------------
+  00天00小时00分00秒029毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：29
+
+  --------------------Insertion Sort 3 Area----------------------
+  00天00小时00分00秒024毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：24
+
+  --------------------Insertion Sort 4 Area----------------------
+  00天00小时00分00秒021毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：21
+  **/</span>   
+    <span class="token function">testArrayPerformance</span><span class="token punctuation">(</span>nearlyArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    that<span class="token punctuation">.</span><span class="token function">alertLine</span><span class="token punctuation">(</span><span class="token string">&quot;Reapet Array Area&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment">/**
+  --------------------Seletion Sort Area----------------------
+  00天00小时00分15秒933毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：15933
+
+  --------------------Insertion Sort 1 Area----------------------
+  00天00小时00分08秒477毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：8477
+
+  --------------------Insertion Sort 2 Area----------------------
+  00天00小时00分08秒449毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：8449
+
+  --------------------Insertion Sort 3 Area----------------------
+  00天00小时00分06秒176毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：6176
+
+  --------------------Insertion Sort 4 Area----------------------
+  00天00小时00分06秒142毫秒 &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt; 总毫秒数：6142
+  **/</span>    
+    <span class="token function">testArrayPerformance</span><span class="token punctuation">(</span>repeatArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 将内容显示在页面上</span>
+  <span class="token function">show</span> <span class="token punctuation">(</span><span class="token parameter">content</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>content<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;br /&gt;&lt;br /&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 将内容显示在控制台上</span>
+  <span class="token function">log</span> <span class="token punctuation">(</span><span class="token parameter">content</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>content <span class="token operator">+</span> <span class="token string">&quot;\r\n\r\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 展示分割线</span>
+  <span class="token function">alterLine</span> <span class="token punctuation">(</span><span class="token parameter">title</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> line <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">--------------------</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>title<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">----------------------</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>line<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;br /&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 重点分割线</span>
+  <span class="token function">alertLine</span> <span class="token punctuation">(</span><span class="token parameter">title</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> line <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">********************</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>title<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">**********************</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>line<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;br /&gt;&lt;br /&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p><strong>PerformanceTest</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 性能测试</span>
+<span class="token keyword">class</span> <span class="token class-name">PerformanceTest</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHelper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SortTestHelper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>sortAlgorithms <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SortAlgorithms</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 对比堆 主要对比 使用heapify 与 不使用heapify时的性能</span>
+  <span class="token function">testHeap</span> <span class="token punctuation">(</span><span class="token parameter">heap<span class="token punctuation">,</span> array<span class="token punctuation">,</span> isHeapify</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> startTime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 是否支持 heapify</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isHeapify<span class="token punctuation">)</span>
+      heap<span class="token punctuation">.</span><span class="token function">heapify</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> element <span class="token keyword">of</span> array<span class="token punctuation">)</span>
+        heap<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;heap size:&quot;</span> <span class="token operator">+</span> heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;\r\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token string">&quot;heap size:&quot;</span> <span class="token operator">+</span> heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;&lt;br /&gt;&lt;br /&gt;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 使用数组取值</span>
+    <span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> heap<span class="token punctuation">.</span><span class="token function">extractMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+      <span class="token string">&quot;Array size:&quot;</span> <span class="token operator">+</span> arr<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token string">&quot;，heap size:&quot;</span> <span class="token operator">+</span> heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;\r\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token punctuation">(</span>
+      <span class="token string">&quot;Array size:&quot;</span> <span class="token operator">+</span> arr<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token string">&quot;，heap size:&quot;</span> <span class="token operator">+</span> heap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;&lt;br /&gt;&lt;br /&gt;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 检验一下是否符合要求</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;error.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+      <span class="token string">&quot;test heap completed.&quot;</span> <span class="token operator">+</span> <span class="token string">&quot;\r\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token string">&quot;test heap completed.&quot;</span> <span class="token operator">+</span> <span class="token string">&quot;&lt;br /&gt;&lt;br /&gt;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> endTime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">calcTime</span><span class="token punctuation">(</span>endTime <span class="token operator">-</span> startTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 计算运行的时间，转换为 天-小时-分钟-秒-毫秒</span>
+  <span class="token function">calcTime</span> <span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">//获取距离的天数</span>
+    <span class="token keyword">var</span> day <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>result <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">24</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//获取距离的小时数</span>
+    <span class="token keyword">var</span> hours <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>result <span class="token operator">/</span> <span class="token punctuation">(</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token comment">//获取距离的分钟数</span>
+    <span class="token keyword">var</span> minutes <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>result <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//获取距离的秒数</span>
+    <span class="token keyword">var</span> seconds <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>result <span class="token operator">/</span> <span class="token number">1000</span> <span class="token operator">%</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//获取距离的毫秒数</span>
+    <span class="token keyword">var</span> milliSeconds <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>result <span class="token operator">%</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 计算时间</span>
+    day <span class="token operator">=</span> day <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">&quot;0&quot;</span> <span class="token operator">+</span> day <span class="token operator">:</span> day<span class="token punctuation">;</span>
+    hours <span class="token operator">=</span> hours <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">&quot;0&quot;</span> <span class="token operator">+</span> hours <span class="token operator">:</span> hours<span class="token punctuation">;</span>
+    minutes <span class="token operator">=</span> minutes <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">&quot;0&quot;</span> <span class="token operator">+</span> minutes <span class="token operator">:</span> minutes<span class="token punctuation">;</span>
+    seconds <span class="token operator">=</span> seconds <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">&quot;0&quot;</span> <span class="token operator">+</span> seconds <span class="token operator">:</span> seconds<span class="token punctuation">;</span>
+    milliSeconds <span class="token operator">=</span> milliSeconds <span class="token operator">&lt;</span> <span class="token number">100</span> <span class="token operator">?</span>
+      <span class="token punctuation">(</span>milliSeconds <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">?</span> <span class="token string">&quot;00&quot;</span> <span class="token operator">+</span> milliSeconds <span class="token operator">:</span> <span class="token string">&quot;0&quot;</span> <span class="token operator">+</span> milliSeconds<span class="token punctuation">)</span> <span class="token operator">:</span> milliSeconds<span class="token punctuation">;</span>
+  
+    <span class="token comment">// 输出耗时字符串</span>
+    result <span class="token operator">=</span> day <span class="token operator">+</span> <span class="token string">&quot;天&quot;</span> <span class="token operator">+</span> hours <span class="token operator">+</span> <span class="token string">&quot;小时&quot;</span> <span class="token operator">+</span> minutes <span class="token operator">+</span> <span class="token string">&quot;分&quot;</span> <span class="token operator">+</span>
+     seconds <span class="token operator">+</span> <span class="token string">&quot;秒&quot;</span> <span class="token operator">+</span> milliSeconds <span class="token operator">+</span> <span class="token string">&quot;毫秒&quot;</span> <span class="token operator">+</span> 
+     <span class="token string">&quot;  &lt;&lt;&lt;&lt;============&gt;&gt;&gt;&gt;  总毫秒数：&quot;</span> <span class="token operator">+</span> result<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 自定义对比</span>
+  <span class="token function">testCustomFn</span> <span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> startTime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> endTime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">calcTime</span><span class="token punctuation">(</span>endTime <span class="token operator">-</span> startTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 测试排序算法的性能</span>
+  <span class="token function">testSort</span> <span class="token punctuation">(</span><span class="token parameter">array<span class="token punctuation">,</span> sortMethod</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> newArray <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHelper<span class="token punctuation">.</span><span class="token function">cloneArray</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> sort <span class="token operator">=</span> <span class="token function">sortMethod</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>sortAlgorithms<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">testCustomFn</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token function">sort</span><span class="token punctuation">(</span>newArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>sortTestHelper<span class="token punctuation">.</span><span class="token function">isSorted</span><span class="token punctuation">(</span>newArray<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;sort bad.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>SortTestHelper</strong></p> <div class="language-js extra-class"><pre class="language-js"><code>
+</code></pre></div><h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>Selection Sort 选择排序 和 Insertion Sort 插入排序都是两种O(n^2)级别的排序算法。</p> <p><strong>选择排序的思想</strong></p> <p>它的思想非常的简单，它的缺点也非常的明显，对于任何一个数组，选择排序两重循环，每一轮循环都必须完全的执行完成，正是因为如此选择排序的效率在任何情况下都是非常慢的。<br>
+它也可以进行优化，可以从两端同时比较，这样效率都会提高一半左右。</p> <p><strong>插入排序的思想</strong></p> <p>虽然它最差的时间复杂度也是<code>O(n^2)</code>级别的，但是在数组近乎有序的情况下，它的性能非常的高，甚至会比<code>O(nlogn)</code>级别的算法还要高，这使得插入排序非常重要的实际意义。</p> <h3 id="扩展"><a href="#扩展" class="header-anchor">#</a> 扩展</h3> <p><strong>冒泡排序Bubble Sort</strong></p> <p>在近乎有序的数据中使用冒泡排序，刚开始接触的第一个排序算法就是冒泡排序，冒泡排序的性能整体上没有插入排序好，后面会对它进行实现，测试一下它在无序和有序情况下的性能，然后像对插入排序一样对冒泡排序进行一下优化。</p> <p><strong>希尔排序Shell Sort</strong></p> <p>通过插入排序法还可以引申出一个非常重要的排序法，这个排序法就是希尔排序法，希尔排序整体的思路就是插入排序的延申。<br>
+在插入排序中每一次都是和之前的一个元素进行比较，而希尔排序是尝试每一次和之前第h个元素进行比较，这样下来就会将h这个很大的值逐渐缩小到1。一步一步的将一个完全无序的数组变成近乎有序的数组，变成有序性更强的数组，到最后，当h等于1的时候，最终变成了一个排好序的数组。<br>
+这个过程让整个算法的时间复杂度发生了质变，所以希尔排序的时间复杂度分析相对是比较难的，选择不同的让h逐渐递减的序列它的排序的复杂度也是不同的。<br>
+也可以实现它，从而了解希尔排序的排序过程，当你理解了希尔排序的排序过程，你会发现它的思想和插入排序法是一脉相承的，它有一个很常用的让h递减的序列，在这种情况下希尔排序的时间复杂度能达到n的<code>二分之三</code>次方级别，相对而言它比<code>O(n^2)</code>级别的算法改进了非常的多。<br>
+希尔排序本身它也是一个非常实用的方法，它的时间复杂度比<code>O(n^2)</code>低但是<code>O(nlogn)</code>高一点，但是它的实现相对比较简单，所以在某些情况下使用希尔排序会是一种首选，但是对于排序来说，它的最优的时间复杂度会是<code>O(nlogn)</code>级别的。</p></div></div> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=%E7%AE%97%E6%B3%95" title="标签">#算法</a></div> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">04年07月2022日 01时41分20秒</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/17845450445/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">浅谈算法解析</div></a> <a href="/pages/90132170217/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">浅聊数据结构(和算法)</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/17845450445/" class="prev">浅谈算法解析</a></span> <span class="next"><a href="/pages/90132170217/"> 浅聊数据结构(和算法) </a>
+        →
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/17845450445/"><div>浅谈算法解析</div></a> <span>04-05</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/0300408048/"><div>封装自己的专属线段树SegmentTree</div></a> <span>04-04</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/18258210421/"><div>响应式系统的作用与实现-读后感</div></a> <span>04-04</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div> </main></div> <div class="footer"><!----> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2017-2022
+    <span class="link">aiyoudiao 码二</span> <span>备案号：</span> <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" title="备案号">鄂ICP备2022002654号-1</a></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div><!----><div id="VuepressPluginLive2d"></div></div></div>
+    <script src="/assets/js/app.c6c7eba0.js" defer></script><script src="/assets/js/4.ca94a295.js" defer></script><script src="/assets/js/5.d0d5bad8.js" defer></script><script src="/assets/js/35.172f7a27.js" defer></script><script src="/assets/js/10.7df48824.js" defer></script><script src="/assets/js/12.15a841cb.js" defer></script>
+  </body>
+</html>

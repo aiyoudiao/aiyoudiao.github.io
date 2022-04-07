@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>浅谈算法解析 | aiyoudiao</title>
+    <meta name="generator" content="VuePress 1.9.7" />
+    <link rel="icon" href="/img/blog.ico">
+    <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script> <meta name="description" content="码二~">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,gitee,markdown">
+    <meta name="theme-color" content="#11a8cd">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <link rel="preload" href="/assets/css/0.styles.ea2a3732.css" as="style"><link rel="preload" href="/assets/js/app.c6c7eba0.js" as="script"><link rel="preload" href="/assets/js/4.ca94a295.js" as="script"><link rel="preload" href="/assets/js/5.d0d5bad8.js" as="script"><link rel="preload" href="/assets/js/34.033f8397.js" as="script"><link rel="preload" href="/assets/js/10.7df48824.js" as="script"><link rel="preload" href="/assets/js/12.15a841cb.js" as="script"><link rel="prefetch" href="/assets/js/1.5f9638fa.js"><link rel="prefetch" href="/assets/js/11.0db54f7b.js"><link rel="prefetch" href="/assets/js/13.298118a4.js"><link rel="prefetch" href="/assets/js/14.cb62bfee.js"><link rel="prefetch" href="/assets/js/15.5d606de0.js"><link rel="prefetch" href="/assets/js/16.186fb412.js"><link rel="prefetch" href="/assets/js/17.614b9afc.js"><link rel="prefetch" href="/assets/js/18.8c1807fd.js"><link rel="prefetch" href="/assets/js/19.da1b6a1a.js"><link rel="prefetch" href="/assets/js/2.8f47fb2e.js"><link rel="prefetch" href="/assets/js/20.81716912.js"><link rel="prefetch" href="/assets/js/21.3e255f06.js"><link rel="prefetch" href="/assets/js/22.292b0713.js"><link rel="prefetch" href="/assets/js/23.a93d15b2.js"><link rel="prefetch" href="/assets/js/24.ddc33827.js"><link rel="prefetch" href="/assets/js/25.3f91d4ea.js"><link rel="prefetch" href="/assets/js/26.e17b1e28.js"><link rel="prefetch" href="/assets/js/27.77772e43.js"><link rel="prefetch" href="/assets/js/28.6f9aebac.js"><link rel="prefetch" href="/assets/js/29.295abe76.js"><link rel="prefetch" href="/assets/js/30.3333af9f.js"><link rel="prefetch" href="/assets/js/31.b628decb.js"><link rel="prefetch" href="/assets/js/32.2500cf7f.js"><link rel="prefetch" href="/assets/js/33.c5b5cc76.js"><link rel="prefetch" href="/assets/js/35.172f7a27.js"><link rel="prefetch" href="/assets/js/36.d35e94a9.js"><link rel="prefetch" href="/assets/js/37.08f83650.js"><link rel="prefetch" href="/assets/js/38.76963c67.js"><link rel="prefetch" href="/assets/js/39.e9d48264.js"><link rel="prefetch" href="/assets/js/40.9322fe67.js"><link rel="prefetch" href="/assets/js/41.78621162.js"><link rel="prefetch" href="/assets/js/42.3d06e52c.js"><link rel="prefetch" href="/assets/js/43.4b73837a.js"><link rel="prefetch" href="/assets/js/44.c9ee5d36.js"><link rel="prefetch" href="/assets/js/45.3a71afda.js"><link rel="prefetch" href="/assets/js/46.a9691892.js"><link rel="prefetch" href="/assets/js/47.bd3791bd.js"><link rel="prefetch" href="/assets/js/48.94cc4624.js"><link rel="prefetch" href="/assets/js/49.56177217.js"><link rel="prefetch" href="/assets/js/50.649dc58f.js"><link rel="prefetch" href="/assets/js/51.869ba46a.js"><link rel="prefetch" href="/assets/js/52.35d269ca.js"><link rel="prefetch" href="/assets/js/53.54638e1a.js"><link rel="prefetch" href="/assets/js/54.bdf4737b.js"><link rel="prefetch" href="/assets/js/55.e70b8a13.js"><link rel="prefetch" href="/assets/js/56.c9332431.js"><link rel="prefetch" href="/assets/js/57.b37f4c38.js"><link rel="prefetch" href="/assets/js/58.5ae4ac7f.js"><link rel="prefetch" href="/assets/js/59.7cf6d38b.js"><link rel="prefetch" href="/assets/js/6.841b8cef.js"><link rel="prefetch" href="/assets/js/60.24a8be23.js"><link rel="prefetch" href="/assets/js/61.7a92ffe1.js"><link rel="prefetch" href="/assets/js/62.eadcbaba.js"><link rel="prefetch" href="/assets/js/63.39fe0408.js"><link rel="prefetch" href="/assets/js/64.b1f04c24.js"><link rel="prefetch" href="/assets/js/65.1321fdec.js"><link rel="prefetch" href="/assets/js/66.a622daef.js"><link rel="prefetch" href="/assets/js/67.59638d5a.js"><link rel="prefetch" href="/assets/js/68.fd684920.js"><link rel="prefetch" href="/assets/js/69.c5fc1187.js"><link rel="prefetch" href="/assets/js/7.9287b053.js"><link rel="prefetch" href="/assets/js/70.d8374bf5.js"><link rel="prefetch" href="/assets/js/71.76a7dae2.js"><link rel="prefetch" href="/assets/js/72.15092da0.js"><link rel="prefetch" href="/assets/js/73.49154798.js"><link rel="prefetch" href="/assets/js/74.c164acc2.js"><link rel="prefetch" href="/assets/js/75.c65ef9d6.js"><link rel="prefetch" href="/assets/js/76.2ab9fc0c.js"><link rel="prefetch" href="/assets/js/77.74806875.js"><link rel="prefetch" href="/assets/js/78.fbd9e50c.js"><link rel="prefetch" href="/assets/js/79.5704ecc2.js"><link rel="prefetch" href="/assets/js/8.5c651715.js"><link rel="prefetch" href="/assets/js/80.cb6fe6c9.js"><link rel="prefetch" href="/assets/js/81.b6f8378f.js"><link rel="prefetch" href="/assets/js/82.f350af12.js"><link rel="prefetch" href="/assets/js/83.8c12ed3b.js"><link rel="prefetch" href="/assets/js/84.71bad8e7.js"><link rel="prefetch" href="/assets/js/9.a80ff5d3.js"> <link rel="stylesheet" href="/assets/css/0.styles.ea2a3732.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" width="50" height="50" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://p3-passport.byteacctimg.com/img/user-avatar/794fdae4ff249d532da19a3c26d420ed~300x300.image" alt="aiyoudiao" class="logo"> <span class="site-name can-hide">
+      aiyoudiao
+    </span></a> <div class="links"><div class="sky-switch" data-v-3a03d589><label for="toggle" data-v-3a03d589><input id="toggle" type="checkbox" data-v-3a03d589><div data-v-3a03d589></div></label></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><!----> <span class="title" style="display:;">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/6840207027/" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与设计" class="dropdown-title"><!----> <span class="title" style="display:;">算法与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/70741550255/" class="nav-link">
+  LeetCode
+</a></li><li class="dropdown-item"><!----> <a href="/pages/17845450445/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/pages/90132170217/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/pages/50546120212/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02344550255/" class="nav-link">
+  Other
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技能" class="dropdown-title"><!----> <span class="title" style="display:;">技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/82158160216/" class="nav-link">
+  PMP
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41858590259/" class="nav-link">
+  Office
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02359360236/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/pages/73600130213/" class="nav-link">
+  Bash
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="历程" class="dropdown-title"><!----> <span class="title" style="display:;">历程</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/83857320232/" class="nav-link">
+  流年
+</a></li><li class="dropdown-item"><!----> <a href="/pages/93419130213/" class="nav-link">
+  片段
+</a></li><li class="dropdown-item"><!----> <a href="/pages/99744220322/" class="nav-link">
+  读书
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="首页" class="dropdown-title"><!----> <span class="title" style="display:;">首页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">
+  归档
+</a></li><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">
+  分类
+</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">
+  标签
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><!----> <span class="title" style="display:;">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/02657130213/" class="nav-link">
+  简介
+</a></li><li class="dropdown-item"><!----> <a href="/pages/5390102042/" class="nav-link">
+  收藏
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/mar.jpg"> <div class="blogger-info"><h3>码二</h3> <span>扫微信二维码，认识一下码二吧😉。</span></div></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><!----> <span class="title" style="display:;">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/6840207027/" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与设计" class="dropdown-title"><!----> <span class="title" style="display:;">算法与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/70741550255/" class="nav-link">
+  LeetCode
+</a></li><li class="dropdown-item"><!----> <a href="/pages/17845450445/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/pages/90132170217/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/pages/50546120212/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02344550255/" class="nav-link">
+  Other
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技能" class="dropdown-title"><!----> <span class="title" style="display:;">技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/82158160216/" class="nav-link">
+  PMP
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41858590259/" class="nav-link">
+  Office
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02359360236/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/pages/73600130213/" class="nav-link">
+  Bash
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="历程" class="dropdown-title"><!----> <span class="title" style="display:;">历程</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/83857320232/" class="nav-link">
+  流年
+</a></li><li class="dropdown-item"><!----> <a href="/pages/93419130213/" class="nav-link">
+  片段
+</a></li><li class="dropdown-item"><!----> <a href="/pages/99744220322/" class="nav-link">
+  读书
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="首页" class="dropdown-title"><!----> <span class="title" style="display:;">首页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">
+  归档
+</a></li><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">
+  分类
+</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">
+  标签
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><!----> <span class="title" style="display:;">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/02657130213/" class="nav-link">
+  简介
+</a></li><li class="dropdown-item"><!----> <a href="/pages/5390102042/" class="nav-link">
+  收藏
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>LeetCode</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>算法</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/17845450445/" aria-current="page" class="active sidebar-link">浅谈算法解析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/17845450445/#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/pages/17845450445/#学习路径" class="sidebar-link">学习路径</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/17845450445/#线性-排序" class="sidebar-link">线性（排序）</a></li><li class="sidebar-sub-header"><a href="/pages/17845450445/#树形结构" class="sidebar-link">树形结构</a></li><li class="sidebar-sub-header"><a href="/pages/17845450445/#图结构" class="sidebar-link">图结构</a></li><li class="sidebar-sub-header"><a href="/pages/17845450445/#小结" class="sidebar-link">小结</a></li></ul></li><li class="sidebar-sub-header"><a href="/pages/17845450445/#算法和数据结构的重要性" class="sidebar-link">算法和数据结构的重要性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/17845450445/#白板编程" class="sidebar-link">白板编程</a></li><li class="sidebar-sub-header"><a href="/pages/17845450445/#数据结构和算法" class="sidebar-link">数据结构和算法</a></li><li class="sidebar-sub-header"><a href="/pages/17845450445/#大多数的it领域细分下来都和算法有关" class="sidebar-link">大多数的IT领域细分下来都和算法有关</a></li><li class="sidebar-sub-header"><a href="/pages/17845450445/#总结" class="sidebar-link">总结</a></li></ul></li></ul></li><li><a href="/pages/7300701041/" class="sidebar-link">排序算法基础</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据结构</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>设计模式</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Other</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>vue3设计与实现</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"> <div class="theme-vdoing-wrapper bg-style-1"><div class="articleInfo-wrap" data-v-18fb2c02><div class="articleInfo" data-v-18fb2c02><ul class="breadcrumbs" data-v-18fb2c02><li data-v-18fb2c02><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-18fb2c02></a></li> <li data-v-18fb2c02><a href="/categories/?category=%E7%AE%97%E6%B3%95%E4%B8%8E%E8%AE%BE%E8%AE%A1" title="分类" data-v-18fb2c02>
+          算法与设计
+        </a></li> <li data-v-18fb2c02><a href="/categories/?category=%E7%AE%97%E6%B3%95" title="分类" data-v-18fb2c02>
+          算法
+        </a></li> <!----></ul> <div class="info" data-v-18fb2c02><div title="作者" class="author iconfont icon-touxiang" data-v-18fb2c02><a href="javascript:;" data-v-18fb2c02>aiyoudiao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-18fb2c02><a href="javascript:;" data-v-18fb2c02>2022-04-05</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><!----> <span>
+            浅谈算法解析
+          </span></h1> <div class="theme-vdoing-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>算法其实和语言无关的，算法是一种思想，你想通了就可以使用不同的语言写出来，如java、python、javascript、swit...<br>
+算法可以用来做很多事情，如 编译器、数据库、文件、操作系统、智能AI、各种软件等等。<br>
+通过性能优化能够让程序跑的更快。接触算法学习计算机，学好算法，才能创造出更有意义的东西。而不是简单的把数据取出来，然后简单的放到某一个界面上就结束了这样。<br>
+学习算法不是一蹴而就的，而是需要积累的。学习算法不像是学习数学那样很快就能够看到效果，从最基础的地方开始积累，一点点的向着目标前进，最终肯定会对算法觉得满意，如此在计算机科学的领域大放溢彩。</p> <p>还是那句老话：光看文章能够掌握两成，动手敲代码、动脑思考、画图才可以掌握八成。<a href="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Faiyoudiao%2FMaoDataStructures" target="_blank" rel="noopener noreferrer">源码仓库<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><strong>不要完美主义。掌握好“度”。</strong></p> <p>太过于追求完美会把自己逼的太紧，会产生各种焦虑的心态，最后甚至会怀疑自己，温故而知新，不要停止不前，掌握好这个度，不存在你把那些你认为完全掌握了，然后就成了某一个领域的专家，相反一旦你产生很浓厚的厌恶感，那么就意味着你即将会放弃或者已经选择了放弃，虽然你之前想把它做到 100 分，但是由于你的放弃让它变为 0 分。</p> <p>学习本着自己的目标去。不要在学的过程中偏离了自己的目标。要分清主次。
+难的东西，你可以慢慢的回头看一看。那样才会更加的柳暗花明，更能提升自己的收获。</p> <h2 id="学习路径"><a href="#学习路径" class="header-anchor">#</a> 学习路径</h2> <h3 id="线性-排序"><a href="#线性-排序" class="header-anchor">#</a> 线性（排序）</h3> <p>线性结构主要体现在排序算法上，算法也是算法领域一个非常重要的内容，虽然简单但是通过学习排序可以理解很多深度的算法思想。</p> <h3 id="树形结构"><a href="#树形结构" class="header-anchor">#</a> 树形结构</h3> <p>几种不同的树形结构，知道它们的应用场合、它们的特点、局限性。</p> <h3 id="图结构"><a href="#图结构" class="header-anchor">#</a> 图结构</h3> <p>图论相关的基础算法</p> <h3 id="小结"><a href="#小结" class="header-anchor">#</a> 小结</h3> <p>对于算法的学习来说，编程其实是次要的。对于一些算法思想，写写画画来理解这些算法背后的过程，可能是一个更好的学习算法的思想，一旦你把这个算法想明白了，编码并不难。对于一些著名的所谓的很复杂的算法，大多数都在十几行的范围里就可以完全把它写出来。</p> <h2 id="算法和数据结构的重要性"><a href="#算法和数据结构的重要性" class="header-anchor">#</a> 算法和数据结构的重要性</h2> <p>从最简单的线性到最复杂的图形结构上看，数据结构和算法在计算机编程中是非常非常重要的。<br>
+linux创始人说的一段话：优秀的程序员和平庸的程序员之间的一个非常重要的区别，其实就是在数据结构的使用上，更重要的是从编程的角度上来讲，数据结构和算法完全无法分家的。</p> <p><code>算法 + 数据结构 = 编程</code>：<code>Algorithms + Data Structures = Programs</code></p> <p>很多算法是依托于数据结构存在的，没有这个数据结构就没有这个相应的算法。很多面试问题，听起来像是算法问题，但是本质是数据结构的问题，很多问题比你想象的要更加基础，并不是出一段非常复杂非常精巧的算法问题让你来解决。<br>
+很多时候只是考察你的基础是否牢固，微软让面试者白板编程写一个堆以及谷歌直接拒绝了一个写不出二叉树翻转这样简单算法的面试者。<br>
+当你把基础打牢之后，面对更加复杂更加精巧的算法问题其实才会有思路，否则一味的去追求解决所谓的精巧的算法问题，也只是看到一个问题学习一个想法，而不是系统的把它们整理在一个算法框架中。</p> <h3 id="白板编程"><a href="#白板编程" class="header-anchor">#</a> 白板编程</h3> <p>在一些IT企业的面试中通常喜欢白板编程的方式来考验算法能力。白板变成就是，不给你编译器，给你一个白板，直接在上面写代码。甚至让你在白板上写的代码，可以直接编译运行，所以在白板上编程不会写那种很长的代码，这类面试问题，大多数都是在十行以内的范围中可以解决的。白板编程考察的主要是算法思想的基本功。</p> <h3 id="数据结构和算法"><a href="#数据结构和算法" class="header-anchor">#</a> 数据结构和算法</h3> <p>十种排序算法：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、计数排序、桶排序、基数排序。
+图<br>
+其它算法：最小生成树的贪心算法、最短路径的动态规划、树形结构的递归、归并排序和快速排序的分治算法。
+其它数据结构：斐波那契堆、索引堆。（之前数据结构的文章中没有写到的，可以到这里查看<a href="https://juejin.cn/column/7077906210686828557" target="_blank" rel="noopener noreferrer">掘金平台-数据结构算法实现文章<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>）</p> <h3 id="大多数的it领域细分下来都和算法有关"><a href="#大多数的it领域细分下来都和算法有关" class="header-anchor">#</a> 大多数的IT领域细分下来都和算法有关</h3> <p>图形学<br>
+图像学<br>
+机器学习<br>
+人工智能<br>
+数据挖掘<br>
+操作系统<br>
+编译原理<br>
+网络安全<br>
+虚拟现实<br>
+高性能计算</p> <p>只有当你的算法基础足够好，学这些才能很快的无知有能的上手。</p> <h3 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h3> <p>计算机算法领域的先驱说的一段话。高纳德先生：计算机编程它的本身是美的，这种美其实主要体现在使用精巧的算法来解决这些问题上。<br>
+高纳德先生是一个非常传奇的一个人物。计算机科学家或者软件工程师绝不仅仅是简单的码农，这是一个非常美丽的创造的过程，这些人更应该称为是艺术家。</p></div></div> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=%E7%AE%97%E6%B3%95" title="标签">#算法</a></div> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">04年07月2022日 01时41分20秒</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/70741550255/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">第1题-两数之和</div></a> <a href="/pages/7300701041/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">排序算法基础</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/70741550255/" class="prev">第1题-两数之和</a></span> <span class="next"><a href="/pages/7300701041/"> 排序算法基础 </a>
+        →
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/7300701041/"><div>排序算法基础</div></a> <span>04-06</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/0300408048/"><div>封装自己的专属线段树SegmentTree</div></a> <span>04-04</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/18258210421/"><div>响应式系统的作用与实现-读后感</div></a> <span>04-04</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div> </main></div> <div class="footer"><!----> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2017-2022
+    <span class="link">aiyoudiao 码二</span> <span>备案号：</span> <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" title="备案号">鄂ICP备2022002654号-1</a></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div><!----><div id="VuepressPluginLive2d"></div></div></div>
+    <script src="/assets/js/app.c6c7eba0.js" defer></script><script src="/assets/js/4.ca94a295.js" defer></script><script src="/assets/js/5.d0d5bad8.js" defer></script><script src="/assets/js/34.033f8397.js" defer></script><script src="/assets/js/10.7df48824.js" defer></script><script src="/assets/js/12.15a841cb.js" defer></script>
+  </body>
+</html>

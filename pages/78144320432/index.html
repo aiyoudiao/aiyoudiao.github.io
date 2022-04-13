@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>React16_4整理-TodoList | aiyoudiao</title>
+    <meta name="generator" content="VuePress 1.9.7" />
+    <link rel="icon" href="/img/blog.ico">
+    <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script> <meta name="description" content="码二~">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,gitee,markdown">
+    <meta name="theme-color" content="#11a8cd">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <link rel="preload" href="/assets/css/0.styles.ea2a3732.css" as="style"><link rel="preload" href="/assets/js/app.5576eaa5.js" as="script"><link rel="preload" href="/assets/js/4.ca94a295.js" as="script"><link rel="preload" href="/assets/js/5.d0d5bad8.js" as="script"><link rel="preload" href="/assets/js/35.1480fb9f.js" as="script"><link rel="preload" href="/assets/js/10.ec4cc495.js" as="script"><link rel="preload" href="/assets/js/12.557f063d.js" as="script"><link rel="prefetch" href="/assets/js/1.5f9638fa.js"><link rel="prefetch" href="/assets/js/11.2c086cbf.js"><link rel="prefetch" href="/assets/js/13.298118a4.js"><link rel="prefetch" href="/assets/js/14.cb62bfee.js"><link rel="prefetch" href="/assets/js/15.0a65b222.js"><link rel="prefetch" href="/assets/js/16.186fb412.js"><link rel="prefetch" href="/assets/js/17.614b9afc.js"><link rel="prefetch" href="/assets/js/18.8c1807fd.js"><link rel="prefetch" href="/assets/js/19.da1b6a1a.js"><link rel="prefetch" href="/assets/js/2.bbe1afaa.js"><link rel="prefetch" href="/assets/js/20.81716912.js"><link rel="prefetch" href="/assets/js/21.3e255f06.js"><link rel="prefetch" href="/assets/js/22.292b0713.js"><link rel="prefetch" href="/assets/js/23.14fd6185.js"><link rel="prefetch" href="/assets/js/24.c56014a0.js"><link rel="prefetch" href="/assets/js/25.1d3fa763.js"><link rel="prefetch" href="/assets/js/26.d965e194.js"><link rel="prefetch" href="/assets/js/27.6c3f4a9f.js"><link rel="prefetch" href="/assets/js/28.3c9d9087.js"><link rel="prefetch" href="/assets/js/29.95d3c7b7.js"><link rel="prefetch" href="/assets/js/30.3fa44762.js"><link rel="prefetch" href="/assets/js/31.5547c168.js"><link rel="prefetch" href="/assets/js/32.911369e4.js"><link rel="prefetch" href="/assets/js/33.6d7bcfdd.js"><link rel="prefetch" href="/assets/js/34.4516e051.js"><link rel="prefetch" href="/assets/js/36.2d1733d1.js"><link rel="prefetch" href="/assets/js/37.2a06814f.js"><link rel="prefetch" href="/assets/js/38.6421d3e9.js"><link rel="prefetch" href="/assets/js/39.70ee0bc9.js"><link rel="prefetch" href="/assets/js/40.f8806961.js"><link rel="prefetch" href="/assets/js/41.2486cbfd.js"><link rel="prefetch" href="/assets/js/42.4d5a32cf.js"><link rel="prefetch" href="/assets/js/43.10935dca.js"><link rel="prefetch" href="/assets/js/44.a7ac4a6d.js"><link rel="prefetch" href="/assets/js/45.41e1ec46.js"><link rel="prefetch" href="/assets/js/46.fe09d6b4.js"><link rel="prefetch" href="/assets/js/47.3b873216.js"><link rel="prefetch" href="/assets/js/48.b06da894.js"><link rel="prefetch" href="/assets/js/49.e6fa3f01.js"><link rel="prefetch" href="/assets/js/50.102338c1.js"><link rel="prefetch" href="/assets/js/51.cc044750.js"><link rel="prefetch" href="/assets/js/52.4cdea686.js"><link rel="prefetch" href="/assets/js/53.849f1ecb.js"><link rel="prefetch" href="/assets/js/54.3f19d81d.js"><link rel="prefetch" href="/assets/js/55.80cd1675.js"><link rel="prefetch" href="/assets/js/56.26147a83.js"><link rel="prefetch" href="/assets/js/57.bc2300ee.js"><link rel="prefetch" href="/assets/js/58.aca33953.js"><link rel="prefetch" href="/assets/js/59.b8305cc2.js"><link rel="prefetch" href="/assets/js/6.841b8cef.js"><link rel="prefetch" href="/assets/js/60.9286c5ef.js"><link rel="prefetch" href="/assets/js/61.3c43d908.js"><link rel="prefetch" href="/assets/js/62.84193afa.js"><link rel="prefetch" href="/assets/js/63.e564add2.js"><link rel="prefetch" href="/assets/js/64.a294f8d6.js"><link rel="prefetch" href="/assets/js/65.4bdc1667.js"><link rel="prefetch" href="/assets/js/66.3b1511a4.js"><link rel="prefetch" href="/assets/js/67.96f844ea.js"><link rel="prefetch" href="/assets/js/68.94f79b6e.js"><link rel="prefetch" href="/assets/js/69.ef9d899a.js"><link rel="prefetch" href="/assets/js/7.9287b053.js"><link rel="prefetch" href="/assets/js/70.677b81ec.js"><link rel="prefetch" href="/assets/js/71.461047e1.js"><link rel="prefetch" href="/assets/js/72.84495d36.js"><link rel="prefetch" href="/assets/js/73.e5a2f89c.js"><link rel="prefetch" href="/assets/js/74.af12de5e.js"><link rel="prefetch" href="/assets/js/75.dca26f1f.js"><link rel="prefetch" href="/assets/js/76.4a47d42d.js"><link rel="prefetch" href="/assets/js/77.7a21c105.js"><link rel="prefetch" href="/assets/js/78.b37f4ae4.js"><link rel="prefetch" href="/assets/js/79.4ebc8bae.js"><link rel="prefetch" href="/assets/js/8.252242f0.js"><link rel="prefetch" href="/assets/js/80.ab64e194.js"><link rel="prefetch" href="/assets/js/81.42b905b6.js"><link rel="prefetch" href="/assets/js/82.9876a4ea.js"><link rel="prefetch" href="/assets/js/83.16e6a18e.js"><link rel="prefetch" href="/assets/js/84.310caa3a.js"><link rel="prefetch" href="/assets/js/85.d85f2013.js"><link rel="prefetch" href="/assets/js/86.6079e618.js"><link rel="prefetch" href="/assets/js/87.6c4ca8f1.js"><link rel="prefetch" href="/assets/js/88.22a72c79.js"><link rel="prefetch" href="/assets/js/89.6f38153c.js"><link rel="prefetch" href="/assets/js/9.a80ff5d3.js"><link rel="prefetch" href="/assets/js/90.c9961785.js"><link rel="prefetch" href="/assets/js/91.3caa8393.js"><link rel="prefetch" href="/assets/js/92.afd86aaa.js"><link rel="prefetch" href="/assets/js/93.b5edd9f5.js"><link rel="prefetch" href="/assets/js/94.2bb5d95d.js"> <link rel="stylesheet" href="/assets/css/0.styles.ea2a3732.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" width="50" height="50" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://p3-passport.byteacctimg.com/img/user-avatar/794fdae4ff249d532da19a3c26d420ed~300x300.image" alt="aiyoudiao" class="logo"> <span class="site-name can-hide">
+      aiyoudiao
+    </span></a> <div class="links"><div class="sky-switch" data-v-3a03d589><label for="toggle" data-v-3a03d589><input id="toggle" type="checkbox" data-v-3a03d589><div data-v-3a03d589></div></label></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><!----> <span class="title" style="display:;">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/84633490449/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/pages/2331001041/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/pages/18114480448/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/pages/25236260426/" class="nav-link">
+  低代码
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与设计" class="dropdown-title"><!----> <span class="title" style="display:;">算法与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/70741550255/" class="nav-link">
+  LeetCode
+</a></li><li class="dropdown-item"><!----> <a href="/pages/17845450445/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/pages/90132170217/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/pages/50546120212/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02344550255/" class="nav-link">
+  Other
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技能" class="dropdown-title"><!----> <span class="title" style="display:;">技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/82158160216/" class="nav-link">
+  PMP
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41858590259/" class="nav-link">
+  Office
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02359360236/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/pages/73600130213/" class="nav-link">
+  Bash
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="历程" class="dropdown-title"><!----> <span class="title" style="display:;">历程</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/83857320232/" class="nav-link">
+  流年
+</a></li><li class="dropdown-item"><!----> <a href="/pages/93419130213/" class="nav-link">
+  片段
+</a></li><li class="dropdown-item"><!----> <a href="/pages/99744220322/" class="nav-link">
+  读书
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="首页" class="dropdown-title"><!----> <span class="title" style="display:;">首页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">
+  归档
+</a></li><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">
+  分类
+</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">
+  标签
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><!----> <span class="title" style="display:;">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/02657130213/" class="nav-link">
+  简介
+</a></li><li class="dropdown-item"><!----> <a href="/pages/5390102042/" class="nav-link">
+  收藏
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/mar.jpg"> <div class="blogger-info"><h3>码二</h3> <span>扫微信二维码，认识一下码二吧😉。</span></div></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记" class="dropdown-title"><!----> <span class="title" style="display:;">笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/84633490449/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/pages/2331001041/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/pages/18114480448/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/pages/25236260426/" class="nav-link">
+  低代码
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与设计" class="dropdown-title"><!----> <span class="title" style="display:;">算法与设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/70741550255/" class="nav-link">
+  LeetCode
+</a></li><li class="dropdown-item"><!----> <a href="/pages/17845450445/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/pages/90132170217/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/pages/50546120212/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02344550255/" class="nav-link">
+  Other
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技能" class="dropdown-title"><!----> <span class="title" style="display:;">技能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/82158160216/" class="nav-link">
+  PMP
+</a></li><li class="dropdown-item"><!----> <a href="/pages/41858590259/" class="nav-link">
+  Office
+</a></li><li class="dropdown-item"><!----> <a href="/pages/02359360236/" class="nav-link">
+  面试
+</a></li><li class="dropdown-item"><!----> <a href="/pages/73600130213/" class="nav-link">
+  Bash
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="历程" class="dropdown-title"><!----> <span class="title" style="display:;">历程</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/83857320232/" class="nav-link">
+  流年
+</a></li><li class="dropdown-item"><!----> <a href="/pages/93419130213/" class="nav-link">
+  片段
+</a></li><li class="dropdown-item"><!----> <a href="/pages/99744220322/" class="nav-link">
+  读书
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="首页" class="dropdown-title"><!----> <span class="title" style="display:;">首页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">
+  归档
+</a></li><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">
+  分类
+</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">
+  标签
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><!----> <span class="title" style="display:;">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/02657130213/" class="nav-link">
+  简介
+</a></li><li class="dropdown-item"><!----> <a href="/pages/5390102042/" class="nav-link">
+  收藏
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>react</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>16_4</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/18114480448/" class="sidebar-link">React16_4整理-开篇</a></li><li><a href="/pages/78144320432/" aria-current="page" class="active sidebar-link">React16_4整理-TodoList</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/78144320432/#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#基础语法" class="sidebar-link">基础语法</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#响应式设计思想和事件绑定" class="sidebar-link">响应式设计思想和事件绑定</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#todolist-新增、删除功能" class="sidebar-link">TodoList 新增、删除功能</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#jsx-细节语法补充" class="sidebar-link">JSX 细节语法补充</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#jsx-中不去转义-手动输入的-html-标签" class="sidebar-link">JSX 中不去转义 手动输入的 Html 标签</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#拆分组件与组件之间的传值" class="sidebar-link">拆分组件与组件之间的传值</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#todolist-代码优化" class="sidebar-link">TodoList 代码优化</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#总结" class="sidebar-link">总结</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/pages/78144320432/#声明式与命令式开发" class="sidebar-link">声明式与命令式开发</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#与其它框架并存" class="sidebar-link">与其它框架并存</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#组件式的开发-组件化" class="sidebar-link">组件式的开发（组件化）</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#单向数据流" class="sidebar-link">单向数据流</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#视图层的框架" class="sidebar-link">视图层的框架</a></li><li class="sidebar-sub-header"><a href="/pages/78144320432/#函数式编程" class="sidebar-link">函数式编程</a></li></ul></li></ul></li><li><a href="/pages/7981309049/" class="sidebar-link">React16_4整理-上阶</a></li><li><a href="/pages/4241004044/" class="sidebar-link">React16_4整理-Redux开篇</a></li><li><a href="/pages/2765901041/" class="sidebar-link">React16_4整理-Redux上阶</a></li><li><a href="/pages/53933290429/" class="sidebar-link">React16_4整理-实战</a></li></ul></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>低代码</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>读书会</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"> <div class="theme-vdoing-wrapper bg-style-1"><div class="articleInfo-wrap" data-v-18fb2c02><div class="articleInfo" data-v-18fb2c02><ul class="breadcrumbs" data-v-18fb2c02><li data-v-18fb2c02><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-18fb2c02></a></li> <li data-v-18fb2c02><a href="/categories/?category=%E7%AC%94%E8%AE%B0" title="分类" data-v-18fb2c02>
+          笔记
+        </a></li> <li data-v-18fb2c02><a href="/categories/?category=react" title="分类" data-v-18fb2c02>
+          react
+        </a></li> <li data-v-18fb2c02><a href="/categories/?category=16_4" title="分类" data-v-18fb2c02>16_4</a></li></ul> <div class="info" data-v-18fb2c02><div title="作者" class="author iconfont icon-touxiang" data-v-18fb2c02><a href="javascript:;" data-v-18fb2c02>aiyoudiao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-18fb2c02><a href="javascript:;" data-v-18fb2c02>2022-04-12</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><!----> <span>
+            React16_4整理-TodoList
+          </span></h1> <div class="theme-vdoing-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>React只做两件事，一件事是渲染ui，一件事是响应事件。<br>
+mvc和mvvm都是早些年angular的设计理念。react并不是什么mvvm和mvc，它只是一个很小的东西，只做那两件事儿。它只是个工具。backbone才是真正的mvc，它是模仿java的spring，挪到前端来了。</p> <p>上一篇文章中基础的工程搭建完毕，基础的语法也知悉了，那么开始弄一个todolist 练练手。学任何一门框架或者语言，都可以用todolist来练练手噢，也就是增删改查的逻辑尽快熟悉并上手。</p> <h2 id="基础语法"><a href="#基础语法" class="header-anchor">#</a> 基础语法</h2> <p>React 中 JSX 语法：render 函数中只能有一个根节点，所以你写的多个 html 标签必须包含在一个容器中，比如<code>&lt;div&gt;&lt;/div&gt;</code>中。</p> <p>如果你不想页面中<code>多一个div包在你众多html标签外面</code>，可以通过引入 <code>import React, {Component, Fragment} from 'react'</code>来引入 <code>Fragment</code>，然后用<code>Fragment</code>替换掉<code>render</code>函数中外层包裹着<code>div</code>，这样就能够在渲染页面时<code>只显示你</code>写的<code>众多html标签</code>。</p> <h2 id="响应式设计思想和事件绑定"><a href="#响应式设计思想和事件绑定" class="header-anchor">#</a> 响应式设计思想和事件绑定</h2> <p>你可以通过 <code>this.state={}</code> 来存储数据，这样你就能够在 JSX 中使用了。<br>
+如果你想在<code>JSX</code>中使<code>用js</code>的<code>表达式</code>或者<code>变量</code>，你必须使用<code>{}</code>括起来。</p> <p>在 JSX 语法中如果你<code>给</code>一个<code>标签设置</code>了<code>值</code>，如<code>input</code>标签的<code>value</code>，你设置了<code>{this.state.inputValue}</code>，那么你给<code>this.state.inputValue</code>设置了值，就会<code>导致</code>你的<code>输入框</code>中就<code>无法输入值</code>了。</p> <p>除非你绑定<code>onChange</code>事件，这个<code>onChange</code>事件与<code>onchange</code>事件不同，这是<code>JSX</code>中的，所以你给他添加的方法还是需要用<code>{}</code>括号括起来。</p> <p>在<code>给事件绑定方法</code>时，必须要这样，<code>onChange= {this.changeHandler.bind(this)}</code>，不然<code>this指向</code>会有问题，或者<code>onChange={() =&gt; {this.changeHandler()}}</code>,因为<code>箭头函数</code>就<code>是匿名函数</code>使<code>用了bind(this)</code>。</p> <p>事件绑定的方法里你可以通过<code>e.target</code>来获取你输入的值，这时候你可以通过以下的方式来让文本框中的值改变。</p> <div class="language-react extra-class"><pre class="language-text"><code>    this.setState({this.state.inputValue: e.target.value});
+</code></pre></div><p><code>React</code>只能够直接<code>以数据驱动视图</code>，并不能<code>直接</code>以视图来改变数据<code>，而且如果你使用</code>this.state.inputValue= e.target.value;<code>那也是</code>无效<code>的，它只能使用</code>this.setState<code>来进行</code>修改state<code>中的值。它</code>不像vue<code>那种</code>响应式监听<code>，自动给你修改</code>data<code>中的值，这也是</code>它<code>和</code>vue<code>的</code>不同点`。</p> <h2 id="todolist-新增、删除功能"><a href="#todolist-新增、删除功能" class="header-anchor">#</a> TodoList 新增、删除功能</h2> <p><code>es6</code>中有一个<code>展开运算符</code>: <code>...</code>，如<code>[...[1,2,3,4]]</code> 会把数组中的元素一个个的展开，变成这样<code>[1,2,3,4]</code>，也就是把原数组中的元素放入了新数组中，也可以在对象中使用。</p> <p>你在<code>this.setState</code>中加的<code>{}</code>里面的<code>成员</code>都会<code>变</code>成<code>this.state</code>的<code>成员</code>。这表示将原来的<code>this.state.list</code>平铺到新的数组中，并且还将<code>this.state.inputValue</code>添加进去。</p> <div class="language-react extra-class"><pre class="language-text"><code>    this.setState({list: [...this.state.list, this.state.inputValue]});
+</code></pre></div><p>可以将已经添加的文本框中的值<code>清空</code>掉。</p> <div class="language-react extra-class"><pre class="language-text"><code>    this.setState({list: [...this.state.list, this.state.inputValue], this.state.inputValue: ''});
+</code></pre></div><p>在 React 中你做循环渲染标签的时候一定要给这个标签添加一个 key 属性，属性值可以赋值为 index，但是在实际的编程中，使用 index 作为 key 值是一个不好的习惯。</p> <div class="language-react extra-class"><pre class="language-text"><code>    &lt;ul&gt;
+        {
+            this.state.list.map((item,index) =&gt; {
+                retrun (&lt;li key = {index}&gt;{item}&lt;/li&gt;)
+            })
+        }
+    &lt;/ul&gt;
+</code></pre></div><p>React 中有一个规则叫<code>immutable</code> ，表示<code>state 不允许</code>我们<code>做</code>任何的<code>改变</code>，不然<code>性能优化</code>方面就会<code>出现问题</code>。</p> <div class="language-react extra-class"><pre class="language-text"><code>    // 所以你删除的时候不允许直接用下面这种方式
+    // this.state.list.splice(index, 1);
+
+    // 需要你拷贝一个副本
+    const list = [...this.state.list];
+    list.splice(index, 1);
+    this.setState({
+        list: list
+    });
+</code></pre></div><h2 id="jsx-细节语法补充"><a href="#jsx-细节语法补充" class="header-anchor">#</a> JSX 细节语法补充</h2> <p>JSX 中<code>大写字母开头</code>的标签<code>表示</code>这是一个<code>组件</code>，<code>小写字母开头</code>的标签表示这是一个<code>html元素</code>。<br> <code>{/* 注释内容 */}</code> 是 JSX 中的<code>注释</code><br>
+JSX 中添加<code>类名</code>和 <code>style</code>，<code>className = &quot;box&quot;</code>，<code>style = { {color: red} }</code>。<br>
+JSX 中 使用<code>label</code>标签时使用<code>for</code>时要<code>改</code>为<code>htmlFor</code></p> <h2 id="jsx-中不去转义-手动输入的-html-标签"><a href="#jsx-中不去转义-手动输入的-html-标签" class="header-anchor">#</a> JSX 中不去转义 手动输入的 Html 标签</h2> <p>也就是页面文本框中输入 <code>&lt;h1&gt;xxxx&lt;/h1&gt;</code> 在页面中显示时会被<code>转义</code>成下面这样。</p> <div class="language-html extra-class"><pre class="language-html"><code>    <span class="token entity named-entity" title="&amp;it;">&amp;it;</span>h1<span class="token entity named-entity" title="&gt;">&amp;gt;</span>xxxx<span class="token entity named-entity" title="&amp;it;">&amp;it;</span>/h1<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+</code></pre></div><p>通过给对应的标签 <code>加</code>上 <code>dangerouslySetInnerHTML = { {__html: &lt;h1&gt;xxx&lt;/h1&gt;} }</code>，表示<code>危险</code>的设置<code>InnerHTML</code>内容，这样就会存在被<code>xss攻击</code>的可能。</p> <div class="language-react extra-class"><pre class="language-text"><code>    // 因为写了dangerouslySetInnerHTML 所以li标签对中的item就没必要写了
+    &lt;li key={index} dangerouslySetInnerHTML = {{__html:item}}&gt;&lt;li&gt;
+</code></pre></div><h2 id="拆分组件与组件之间的传值"><a href="#拆分组件与组件之间的传值" class="header-anchor">#</a> 拆分组件与组件之间的传值</h2> <p>组件会变成一个树形的结构，因为一个大的组件中会有很多个小组件，小组件中又有其它的更小的组件。</p> <p><code>父</code>组件<code>传</code>递<code>子</code>组件<code>数据</code>的<code>方式</code>，直接<code>在子组件中添加属性</code>。</p> <div class="language-react extra-class"><pre class="language-text"><code>    // 给子组件传递一个content属性
+    &lt;TodoList content = {this.state.inputValue} /&gt;
+
+    // 子组件中通过 this.props.属性名来使用
+    &lt;div&gt;{this.props.content}&lt;div&gt;
+</code></pre></div><p>如果你嫌每次绑定事件的方法都写<code>.bind(this)</code>，那么你可以把这一步放到<code>constructor</code>中去做,这样可以<code>节约一些性能</code>。</p> <div class="language-react extra-class"><pre class="language-text"><code>    constructor (props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+</code></pre></div><p>当你给<code>子</code>组件<code>传递父</code>组件中的<code>方法</code>，记得<code>给方法加</code>上一个<code>.bind(this)</code>，不然<code>子</code>组件<code>调用</code>时<code>会出现this指向问题</code>。</p> <h2 id="todolist-代码优化"><a href="#todolist-代码优化" class="header-anchor">#</a> TodoList 代码优化</h2> <p>通过代码解构来优化代码。</p> <div class="language-react extra-class"><pre class="language-text"><code>    const {content} = this.props;
+    //上面这行代码表示 将this.props.content 赋值给content
+    //const content = this.props.content;
+</code></pre></div><p>将<code>样式</code>的引入<code>放</code>到引入<code>组件</code>的<code>后</code>面，<code>将</code>事件绑定的方法中需要<code>.bind(this)</code>的写法，<code>统一</code>的放<code>到</code>构造函数中<code>,这样 JSX 中</code>调用方法<code>时就</code>不必<code>每次都.bind(this)</code>了。</p> <div class="language-react extra-class"><pre class="language-text"><code>    constructor (props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+</code></pre></div><div class="language-react extra-class"><pre class="language-text"><code>    &lt;div onClick = {this.handleClick}&gt;&lt;/div&gt;
+</code></pre></div><p>如果你将 <code>遍历列表</code>的<code>操作</code>直接<code>放</code>到<code>JSX</code>中会<code>显得代码过于臃肿</code>，那么你可以<code>写一个方法</code>，然后<code>在JSX中</code>直接<code>调用</code>你写的方法<code>即可</code>。</p> <div class="language-react extra-class"><pre class="language-text"><code>    &lt;div&gt;{this.getListItem()}&lt;/div&gt;
+
+    getListItem(){
+        return  this.state.list.map((item,index) =&gt; {
+            return &lt;li key = {index}&gt;{item}&lt;/li&gt;
+        })
+    }
+</code></pre></div><p>由于<code>React中</code>的<code>setState</code>是<code>异步操作</code>，所以你其实可以<code>传递函数</code>来<code>替代传递对象</code>。</p> <div class="language-react extra-class"><pre class="language-text"><code>    // 原来同步的写法
+    this.setState({
+        list: ['1','2']
+    })
+
+    // 现在的异步写法
+    this.setState(()=&gt;{
+        return {
+            list: ['1','2']
+        }
+    })
+
+    // 再简化一下
+    this.setState(()=&gt;({list: ['1','2']}));
+</code></pre></div><p>如果你使用了 <code>异步写法</code>，那么<code>注意</code>了，<code>如果使用了event对象</code>，<code>那么要将值先保存一下</code>，因为<code>异步</code>的<code>写法获取不到 event</code>对象的，就像<code>for循环</code>里面<code>写函数获取不到</code>每次的<code>i</code>一样。</p> <div class="language-react extra-class"><pre class="language-text"><code>    handleInput(evnet) {
+        const value = event.value;
+        this.setState({} =&gt; ({inputValue: value}));
+    }
+</code></pre></div><p>当使用了异步的写法后，你可以通过函数里传递过来的参数来替代<code>this.state</code></p> <div class="language-react extra-class"><pre class="language-text"><code>        // 再简化一下
+    this.setState((preState)=&gt;(
+            {
+                list: [...preState.list,inputValue],
+                inputValue: ''
+            }
+        )
+    );
+</code></pre></div><p><code>循环</code>的<code>时</code>候<code>key</code>的属性因该<code>放</code>到<code>循环体</code>的<code>最外</code>的那个<code>元素上</code>。</p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <h3 id="声明式与命令式开发"><a href="#声明式与命令式开发" class="header-anchor">#</a> 声明式与命令式开发</h3> <p><code>声明式开发</code>方式：使<code>用框架</code>来<code>操作DOM</code>，如 React、Vue，减少 DOM 操作。<br> <code>命令式开发</code>方式：<code>直接操作DOM</code> ，如 jQuery</p> <h3 id="与其它框架并存"><a href="#与其它框架并存" class="header-anchor">#</a> 与其它框架<code>并存</code></h3> <p><code>React</code> 最终有一个<code>ReactDOM.Render</code>方法，这个方法会<code>将组件渲染成DOM填充页面中容器</code>。<br>
+也就是说，它最后只会填充那个容器，页面其它的容器它管不着，其它的容器你就可以使用其它的技术，如 Vue，Jquery 等等。<br>
+这就是 React 可以与其它框架并存的原因。</p> <h3 id="组件式的开发-组件化"><a href="#组件式的开发-组件化" class="header-anchor">#</a> 组件式的开发（组件化）</h3> <p>首字母大写就是组件，首字母小写就是 html 元素<br>
+父子传值 通过属性的方式，父组件中给子组件设置属性，子组件中通过 this.props 获取属性。<br>
+子父传值，也是一样，只不过传递的是父组件中的方法，但是每个方法都要.bind(this),表示将父组件中的方法的 this 指向父组件，这样子组件调用的时候才有效。</p> <h3 id="单向数据流"><a href="#单向数据流" class="header-anchor">#</a> 单向数据流</h3> <p>父组件可以给子组件传递值，但是子组件一定不能够直接去修改父组件的值，一旦你改变了，React 会给你报一个错误出来，因为传递过来的值是一个只读的属性。</p> <p>单向数据流是为了让测试起来和开发起来方便，不容易遇到坑。</p> <p>如果父组件中有五六个组件，都传递了同一个值，然后你在其中一个子组件中直接修改父组件传递给你的那个属性，那么其它的组件就完蛋了。<br>
+虽然最后还是会修改父组件中的那个属性，但是那不一定，因为 setState 这个操作是异步进行的，前面的修改某个属性的操作，会被后面修改某个属性的操作覆盖掉，只执行最后一次操作。</p> <p>如果页面出现了 bug，你调试起来也不方便，因为你这个属性被五六个组件公用了，都可以直接修改值，这样很不好。<br>
+所以 React 出了单向数据流，只允许父组件向子组件传递数据，但是不允许子组件直接修改父组件传递过去的数据，你可以通过父组件传递过去的方法，来修改父组件中的数据。<br>
+单向数据流代码维护方便。</p> <h3 id="视图层的框架"><a href="#视图层的框架" class="header-anchor">#</a> 视图层的框架</h3> <p>做大型项目时传值是一个问题，所以需要配合一个数据层的框架，帮我们解决 React 中组件间复杂传值的问题。<br>
+如 兄弟组件间传值，这个最麻烦，一层一层往上，再一层一层的往下，项目很大，那就会崩溃。代码冗余。<br>
+所以 React 就把它定义为一个视图层的框架，它并不是什么问题都解决，我只帮你解决数据和视图在页面渲染的问题，至于组件之间传值我并不负责，我交给其它组件来做。<br>
+如果只有两层组件，借助 React 内部的传值机制就可以了，如果有多层组件，就是用<code>Redux</code>等等数据层框架来辅助。<br>
+这也是为什么<code>React</code>将自己称为<code>一个视图层的框架</code>，而<code>不是一个大型的完整的框架</code>，<code>它会借助很多的辅助框架</code>。</p> <h3 id="函数式编程"><a href="#函数式编程" class="header-anchor">#</a> 函数式编程</h3> <p>面向测试的开发流程，前端自动化测试的时候，如果你的代码都是一个个函数，那么测试时就调用这个函数，查看输入输出即可，这样就给前端自动化测试带来很大的便利。</p></div></div> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=react" title="标签">#react</a></div> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">04年13月2022日 09时15分41秒</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/18114480448/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">React16_4整理-开篇</div></a> <a href="/pages/7981309049/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">React16_4整理-上阶</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/18114480448/" class="prev">React16_4整理-开篇</a></span> <span class="next"><a href="/pages/7981309049/"> React16_4整理-上阶 </a>
+        →
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/53933290429/"><div>React16_4整理-实战</div></a> <span>04-13</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/2765901041/"><div>React16_4整理-Redux上阶</div></a> <span>04-13</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/4241004044/"><div>04.React16_4整理-Redux开篇.md</div></a> <span>04-13</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div> </main></div> <div class="footer"><!----> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2017-2022
+    <span class="link">aiyoudiao 码二</span> <span>备案号：</span> <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" title="备案号">鄂ICP备2022002654号-1</a></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div><!----><div id="VuepressPluginLive2d"></div></div></div>
+    <script src="/assets/js/app.5576eaa5.js" defer></script><script src="/assets/js/4.ca94a295.js" defer></script><script src="/assets/js/5.d0d5bad8.js" defer></script><script src="/assets/js/35.1480fb9f.js" defer></script><script src="/assets/js/10.ec4cc495.js" defer></script><script src="/assets/js/12.557f063d.js" defer></script>
+  </body>
+</html>

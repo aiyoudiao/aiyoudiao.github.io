@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{461:function(e,n,i){"use strict";i.r(n);var r={name:"VuepressPluginAPlayer",mounted(){this.initAPlayer()},methods:{initAPlayer(){}},render(){return(0,arguments[0])("div",{attrs:{id:"VuepressPluginAPlayer"}})}},t=i(3),l=Object(t.a)(r,void 0,void 0,!1,null,null,null);n.default=l.exports}}]);
